@@ -73,7 +73,13 @@ def extract_data(link):
         if type == 2:
             auction_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[2]/div/div[1]/h2').text
             evaluation_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[1]/div/div/h2').text
-        start_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[4]/div[6]').text.split()[3]
+
+        more_infos = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[4]')
+        for div in more_infos.find_elements(By.TAG_NAME, 'div'):
+            if 'Data' in div.text:
+                end_date = div.text.split()[-1]
+
+
         if 'Encerra' in BeautifulSoup(requests.get(link).content, 'html.parser').prettify():
             end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[3]
     
@@ -116,6 +122,6 @@ links_list = []
 get_all_ad_links(links_list, website)
 
 for i in range(len(links_list)):
-    print(links_list[i], '\n')
+    print(f'{i} |', links_list[i], '\n')
     extract_data(links_list[i])
 
