@@ -13,6 +13,13 @@ def get_page_links(links_list):
         if property.find_element(By.CLASS_NAME, 'Link_Redirecter').get_property('href') != 'https://www.leilaoimovel.com.br/imoveis-springfield':
             links_list.append(property.find_element(By.CLASS_NAME, 'Link_Redirecter').get_property('href'))
 
+def get_all_ad_links(links_list, website):
+    for num_page in range(len_pages(website)):
+        currently_site = website + '?pag=' + str(num_page)
+        driver.get(currently_site)
+        get_page_links(links_list)
+
+
 def extract_data(link):
     driver.get(link)
 
@@ -70,7 +77,6 @@ def extract_data(link):
         if 'Encerra' in BeautifulSoup(requests.get(link).content, 'html.parser').prettify():
             end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[3]
     
-        print(auction_price, evaluation_price, link, '\n')
 
 # verify if 'Praça' is in the web page
 def auction_type(link): 
@@ -85,22 +91,9 @@ def auction_type(link):
 
 # return the number of pages in website
 def len_pages(website):
-    i = 1 # number of currently page
-    currently_url = website + '?pag=' + str(i)
-    while True:
-        try:
-            resposta = requests.get(currently_url)
-            if resposta.status_code == 200:
-                print("A página web existe!")
-                i += 1
-            else:
-                print("A página web não existe.")
-                break
-        except requests.exceptions.ConnectionError:
-            print("Erro de conexão com a internet.")
-            break
-    return i
-
+    driver.get(website)
+    a = driver.find_element(By.XPATH, r'/html/body/div/main/section[3]/div/div/div[2]/div/a[5]').get_property('href').split('=')[1]
+    return int(a)
 
 
 # SETUP THE FIREFOX WEBDRIVER
@@ -118,12 +111,11 @@ with open(r"src\utils\websites.txt", "r") as websites:
 website = website_list[0]
 
 # ACESS THE WEBSITE
-driver.get(website)
-
-
 links_list = []
-get_page_links(links_list)
+
+get_all_ad_links(links_list, website)
+
 for i in range(len(links_list)):
+    print(links_list[i], '\n')
     extract_data(links_list[i])
-    
 
