@@ -6,11 +6,12 @@ from selenium.webdriver.common.by import By
 import requests
 from bs4 import BeautifulSoup
 
+# get url of actual website and append to the links_list, the https://www.leilaoimovel.com.br/imoveis-springfield isn't added to the list
 def get_page_links(links_list):
     properties = driver.find_elements(By.XPATH, "//div[@class='place-box']")
     for property in properties:
-        links_list.append(property.find_element(By.CLASS_NAME, 'Link_Redirecter').get_property('href'))
-        # remove https://www.leilaoimovel.com.br/imoveis-springfield
+        if property.find_element(By.CLASS_NAME, 'Link_Redirecter').get_property('href') != 'https://www.leilaoimovel.com.br/imoveis-springfield':
+            links_list.append(property.find_element(By.CLASS_NAME, 'Link_Redirecter').get_property('href'))
 
 def extract_data(link):
     driver.get(link)
@@ -24,21 +25,19 @@ def extract_data(link):
     bedrooms = None #
     car_vacancies = None #
 
-    # MONEY INFO
+    # UNFORMATED INFOS - infos that aren't common to each other
     auction_price = None #
     evaluation_price = None 
     discount = None 
     first_price = None #
     second_price = None #
-    
-    # DATE INFO
     start_date = None 
     end_date = None
     first_date = None
     second_date = None
-
-
     auctioneer = None
+
+
     localization = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[1]/div[2]/div/div/p').text
     ad_link = link
     
@@ -62,28 +61,51 @@ def extract_data(link):
         second_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[2]/div[2]/h3').text
         first_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[1]/div[1]/p').text.split()[0]
         second_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[2]/div[1]/p').text.split()[0]
-        start_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[4]/div[6]/b').text.split()[3]
-    elif type == 1:
-        auction_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[2]/div/div[1]/h2').text
-        evaluation_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[1]/div/div/h2').text
-        start_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[4]/div[6]/b').text.split()[0]
-        end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[2]
+        start_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[4]/div[6]').text.split()[3]
+    elif type == 1 or type == 2:
+        if type == 2:
+            auction_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[2]/div/div[1]/h2').text
+            evaluation_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[1]/div/div/h2').text
+        start_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[4]/div[6]').text.split()[3]
+        if 'Encerra' in BeautifulSoup(requests.get(link).content, 'html.parser').prettify():
+            end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[3]
     
-    print(end_date)
+        print(auction_price, evaluation_price, link, '\n')
 
-def auction_type(link):
+# verify if 'Praça' is in the web page
+def auction_type(link): 
     content = requests.get(link).content
     site = BeautifulSoup(content, 'html.parser')
     if 'Praça' in site.prettify():
         return 0
-    else:
+    elif 'consultar'in site.prettify():
         return 1
+    else:
+        return 2
 
+# return the number of pages in website
+def len_pages(website):
+    i = 1 # number of currently page
+    currently_url = website + '?pag=' + str(i)
+    while True:
+        try:
+            resposta = requests.get(currently_url)
+            if resposta.status_code == 200:
+                print("A página web existe!")
+                i += 1
+            else:
+                print("A página web não existe.")
+                break
+        except requests.exceptions.ConnectionError:
+            print("Erro de conexão com a internet.")
+            break
+    return i
 
 
 
 # SETUP THE FIREFOX WEBDRIVER
 options = webdriver.FirefoxOptions()
+options.headless = True
 service = FirefoxService(executable_path=r"drivers/geckodriver.exe")
 driver = webdriver.Firefox(service=service, options=options)
 
@@ -103,5 +125,5 @@ links_list = []
 get_page_links(links_list)
 for i in range(len(links_list)):
     extract_data(links_list[i])
-    break
+    
 
