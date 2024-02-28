@@ -15,26 +15,36 @@ def get_page_links(links_list):
 def extract_data(link):
     driver.get(link)
 
-    # 1 - SPATIAL DATA
-    total_area = None
-    util_area = None
-    bedrooms = None
-    car_vacancies = None
+    # VERIFY THE AUCTION TYPE
+    type = auction_type(link)
 
-    auction_price = None
-    evaluation = None
-    discount = None
+    # 1 - SPATIAL INFO
+    total_area = None #
+    util_area = None #
+    bedrooms = None #
+    car_vacancies = None #
+
+    # MONEY INFO
+    auction_price = None #
+    evaluation_price = None 
+    discount = None 
+    first_price = None #
+    second_price = None #
     
-    start_date = None
+    # DATE INFO
+    start_date = None 
     end_date = None
-    localization = None
-    auctioneer = None
+    first_date = None
+    second_date = None
 
+
+    auctioneer = None
+    localization = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[1]/div[2]/div/div/p').text
     ad_link = link
     
-    # 1 - SPATIAL DATA
-    spatial_data = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[2]')
-    for element in spatial_data.find_elements(By.CLASS_NAME, 'detail'):
+    # 1 - SPATIAL INFO
+    spatial_info = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[2]')
+    for element in spatial_info.find_elements(By.CLASS_NAME, 'detail'):
         if element.find_element(By.CLASS_NAME, 'mb-1').text == 'Área Útil:':
             util_area = element.find_element(By.CLASS_NAME, 'icon').find_element(By.TAG_NAME, 'span').text
         elif element.find_element(By.CLASS_NAME, 'mb-1').text == 'Área Terreno:':
@@ -43,7 +53,34 @@ def extract_data(link):
             bedrooms = element.find_element(By.CLASS_NAME, 'icon').find_element(By.TAG_NAME, 'span').text
         elif element.find_element(By.CLASS_NAME, 'mb-1').text == 'Vagas:':
             car_vacancies = element.find_element(By.CLASS_NAME, 'icon').find_element(By.TAG_NAME, 'span').text
-    print(util_area, total_area, bedrooms, car_vacancies)
+    
+
+    # MONEY INFO
+    if type == 0:
+        auction_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[1]/div/div/h2').text
+        first_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[1]/div[2]/h3').text
+        second_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[2]/div[2]/h3').text
+        first_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[1]/div[1]/p').text.split()[0]
+        second_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[2]/div[1]/p').text.split()[0]
+        start_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[4]/div[6]/b').text.split()[3]
+    elif type == 1:
+        auction_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[2]/div/div[1]/h2').text
+        evaluation_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[1]/div/div/h2').text
+        start_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[4]/div[6]/b').text.split()[0]
+        end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[2]
+    
+    print(end_date)
+
+def auction_type(link):
+    content = requests.get(link).content
+    site = BeautifulSoup(content, 'html.parser')
+    if 'Praça' in site.prettify():
+        return 0
+    else:
+        return 1
+
+
+
 
 # SETUP THE FIREFOX WEBDRIVER
 options = webdriver.FirefoxOptions()
@@ -64,5 +101,7 @@ driver.get(website)
 
 links_list = []
 get_page_links(links_list)
-extract_data(links_list[4])
+for i in range(len(links_list)):
+    extract_data(links_list[i])
+    break
 
