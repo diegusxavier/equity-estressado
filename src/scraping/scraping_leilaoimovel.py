@@ -14,7 +14,7 @@ def get_page_links(links_list):
             links_list.append(property.find_element(By.CLASS_NAME, 'Link_Redirecter').get_property('href'))
 
 def get_all_ad_links(links_list, website):
-    for num_page in range(len_pages(website)):
+    for num_page in range(1, len_pages(website)+1):
         currently_site = website + '?pag=' + str(num_page)
         driver.get(currently_site)
         get_page_links(links_list)
@@ -27,28 +27,32 @@ def extract_data(link):
     type = auction_type(link)
 
     # 1 - SPATIAL INFO
-    total_area = None #
-    util_area = None #
-    bedrooms = None #
-    car_vacancies = None #
+    total_area = None 
+    util_area = None 
+    bedrooms = None 
+    car_vacancies = None 
 
     # UNFORMATED INFOS - infos that aren't common to each other
-    auction_price = None #
+    auction_price = None 
     evaluation_price = None 
     discount = None 
-    first_price = None #
-    second_price = None #
+    first_price = None 
+    second_price = None 
     start_date = None 
     end_date = None
     first_date = None
     second_date = None
     auctioneer = None
 
-
     localization = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[1]/div[2]/div/div/p').text
     ad_link = link
-    
-    # 1 - SPATIAL INFO
+
+    more_infos = driver.find_element(By.CLASS_NAME, r'sobre-imovel')
+    for div in more_infos.find_elements(By.TAG_NAME, 'div'):
+        if 'Data' in div.text and len(div.text.split()) < 15:
+            start_date = div.text.split()[-1]
+
+    # 1 - SPATIAL INFO (correctly)
     spatial_info = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[2]')
     for element in spatial_info.find_elements(By.CLASS_NAME, 'detail'):
         if element.find_element(By.CLASS_NAME, 'mb-1').text == 'Área Útil:':
@@ -61,28 +65,42 @@ def extract_data(link):
             car_vacancies = element.find_element(By.CLASS_NAME, 'icon').find_element(By.TAG_NAME, 'span').text
     
 
-    # MONEY INFO
-    if type == 0:
-        auction_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[1]/div/div/h2').text
-        first_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[1]/div[2]/h3').text
-        second_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[2]/div[2]/h3').text
-        first_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[1]/div[1]/p').text.split()[0]
-        second_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/div[2]/div[1]/p').text.split()[0]
-        start_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[4]/div[6]').text.split()[3]
+    # OTHERS INFOS
+    if type == 0: # with "1o praça" and "2o praça"
+        price_infos = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]')
+
+        for div in price_infos.find_elements(By.TAG_NAME, 'div'):
+            if '1° Praça:' in div.text:
+                if first_date != None:
+                    continue
+                first_div = list(div.text.split())
+                first_date = first_div[2]
+                first_price = first_div[6]
+                continue
+            if '2° Praça:' in div.text:
+                if second_date != None:
+                    continue
+                second_div = list(div.text.split())
+                second_date = second_div[2]
+                second_price = second_div[6]
+                continue
+        auction_price = first_price
+
+    # unique price
     elif type == 1 or type == 2:
         if type == 2:
-            auction_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[2]/div/div[1]/h2').text
-            evaluation_price = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[1]/div/div/h2').text
-
-        more_infos = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[4]')
-        for div in more_infos.find_elements(By.TAG_NAME, 'div'):
-            if 'Data' in div.text:
-                end_date = div.text.split()[-1]
-
+            price_infos = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div')
+            for div in price_infos.find_elements(By.TAG_NAME, 'div'):
+                if 'avaliado' in div.text:
+                    evaluation_price = div.text.split()[-1]
+                if 'Imóvel' in div.text:
+                    auction_price = div.text.split()[4]
 
         if 'Encerra' in BeautifulSoup(requests.get(link).content, 'html.parser').prettify():
             end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[3]
-    
+
+
+    return [auction_price, total_area, util_area, bedrooms, car_vacancies, first_price, second_price, evaluation_price, start_date, end_date, first_date, second_date, auctioneer, localization, ad_link]
 
 # verify if 'Praça' is in the web page
 def auction_type(link): 
@@ -118,10 +136,14 @@ website = website_list[0]
 
 # ACESS THE WEBSITE
 links_list = []
+df_columns = ['Valor do Leilão', 'Área Total', 'Área Útil', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Data de Início', 'Data de Encerramento', 'Data 1a Praça', 'Data 2a Praça', 'Leiloeiro', 'Localização', 'Link']
+df = pd.DataFrame(columns=df_columns)
+df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
 
 get_all_ad_links(links_list, website)
 
 for i in range(len(links_list)):
     print(f'{i} |', links_list[i], '\n')
-    extract_data(links_list[i])
-
+    currently_row = extract_data(links_list[i])
+    df.loc[len(df)] = currently_row
+    df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
