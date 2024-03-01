@@ -109,7 +109,7 @@ def extract_data(link):
         #     end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[2]
 
     if auction_price != None:
-        if 'combinar' in auction_price:
+        if 'consultar' in auction_price:
             auction_price = None
         else:
             auction_price = float(auction_price.replace('.', '').replace(',', '.'))
