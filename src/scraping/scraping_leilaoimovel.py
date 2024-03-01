@@ -108,7 +108,11 @@ def extract_data(link):
         # if 'Encerra' in BeautifulSoup(requests.get(link).content, 'html.parser').prettify():
         #     end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[2]
 
-    auction_price = float(auction_price.replace('.', '').replace(',', '.'))
+    if auction_price != None:
+        if auction_price.isnumeric():
+            auction_price = float(auction_price.replace('.', '').replace(',', '.'))
+        else:
+            auction_price = 0
     if total_area != None:
         total_area = float(total_area.replace('.', '').replace(',', '.').replace('m²', ''))
     if util_area != None:
