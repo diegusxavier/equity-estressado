@@ -179,6 +179,7 @@ for i in range(len(links_list)):
 
 fim = time.time()
 tempo_execucao = fim - inicio
-print(f"Tempo de execução: {tempo_execucao:.2f} segundos ({tempo_execucao:.2f/60}) minutos")
-
 df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
+
+print(f"Tempo de execução: {tempo_execucao:.2f} segundos ({tempo_execucao/60}) minutos")
+
