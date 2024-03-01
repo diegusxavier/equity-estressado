@@ -142,7 +142,7 @@ def auction_type(link):
 def len_pages(website):
     driver.get(website)
     a = driver.find_element(By.XPATH, r'/html/body/div/main/section[3]/div/div/div[2]/div/a[5]').get_property('href').split('=')[1]
-    return 2#int(a)
+    return int(a)
 
 
 # SETUP THE FIREFOX WEBDRIVER
@@ -175,6 +175,6 @@ for i in range(len(links_list)):
 
 fim = time.time()
 tempo_execucao = fim - inicio
-print(f"Tempo de execução: {tempo_execucao:.2f} segundos")
+print(f"Tempo de execução: {tempo_execucao:.2f} segundos ({tempo_execucao:.2f/60}) minutos")
 
 df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
