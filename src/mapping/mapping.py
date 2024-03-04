@@ -20,7 +20,7 @@ def get_coordinates(addres):
 
 def plot_map(dataframe, nome):
     coordinates = get_coordinates(dataframe['Localização'][0])
-    map = folium.Map(location=coordinates, zoom_start=12)
+    map = folium.Map(location=[-3.777014, -38.535588], zoom_start=12)
 
     for i in range(dataframe.shape[0]):
         coordinates = get_coordinates(dataframe['Localização'][i])
