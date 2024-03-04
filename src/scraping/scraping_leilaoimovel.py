@@ -167,12 +167,12 @@ website = website_list[0]
 links_list = []
 df_columns = ['Valor do Leilão', 'Área Total [m²]', 'Área Útil [m²]', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Data de Início', 'Data de Encerramento', 'Data 1a Praça', 'Data 2a Praça', 'Leiloeiro', 'Matrícula', 'Inscrição Imobiliária', 'Localização', 'Link']
 df = pd.DataFrame(columns=df_columns)
-df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
+# df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
 
 get_all_ad_links(links_list, website)
 
 for i in range(len(links_list)):
-    print(f'{i} |', links_list[i], '\n')
+    # print(f'{i} |', links_list[i], '\n')
     currently_row = extract_data(links_list[i])
     df.loc[len(df)] = currently_row
     # df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
