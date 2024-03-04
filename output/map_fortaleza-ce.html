@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b3a57053a83fbfb25314b50fb3a47697 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_b3a57053a83fbfb25314b50fb3a47697" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b3a57053a83fbfb25314b50fb3a47697 = L.map(
+                "map_b3a57053a83fbfb25314b50fb3a47697",
+                {
+                    center: [-3.7886257, -38.4780442],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ac4ec0c6715d957608dab5d6e10becae = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_ac4ec0c6715d957608dab5d6e10becae.addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            var circle_marker_49b654713bff31b03624878c2a96cdf0 = L.circleMarker(
+                [-3.7886257, -38.4780442],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_49b654713bff31b03624878c2a96cdf0.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 209535.2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_70b7c63bf68abb62a279ca7be4b92f83 = L.circleMarker(
+                [-3.8387889, -38.4841022],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_70b7c63bf68abb62a279ca7be4b92f83.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 720000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2fc77eb4966d412d6d2825778cf8918e = L.circleMarker(
+                [-3.7535948, -38.505871],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_2fc77eb4966d412d6d2825778cf8918e.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 555000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_05e9bd559d135284f290fc3f4e619461 = L.circleMarker(
+                [-3.8136028, -38.5249903],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_05e9bd559d135284f290fc3f4e619461.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 260000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_08c40b9af3838a3c2c404ce5c3cbd438 = L.circleMarker(
+                [-3.730291, -38.5538035],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_08c40b9af3838a3c2c404ce5c3cbd438.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 210000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b3a7d852af56a7cfbce821e19e06b2fa = L.circleMarker(
+                [-3.8071692, -38.4839189],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_b3a7d852af56a7cfbce821e19e06b2fa.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 275560.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_faaed85e2431a62f95671858fec6fb0e = L.circleMarker(
+                [-3.8063622, -38.5345986],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_faaed85e2431a62f95671858fec6fb0e.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 300050.5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_117503ac93eb6b765c7a25f7713fe9be = L.circleMarker(
+                [-3.7863066, -38.5604695],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_117503ac93eb6b765c7a25f7713fe9be.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 187090.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_aeabb685519b47420c644353b374bb77 = L.circleMarker(
+                [-3.809291699999999, -38.4655416],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_aeabb685519b47420c644353b374bb77.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 290000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e2a67e978445b3f76b91c1254d7a3172 = L.circleMarker(
+                [-3.8368985, -38.4886579],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_e2a67e978445b3f76b91c1254d7a3172.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 207690.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c480b271d3f7755b1e31bbd0f825ed4a = L.circleMarker(
+                [-3.7924829, -38.4736767],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_c480b271d3f7755b1e31bbd0f825ed4a.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 663766.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_96a6b5195ba7b9110ef157adcf989002 = L.circleMarker(
+                [-3.7715511, -38.51584769999999],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_96a6b5195ba7b9110ef157adcf989002.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 346615.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_330b03c90c127cb2038839b175f696e9 = L.circleMarker(
+                [-3.8222944, -38.4905668],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_330b03c90c127cb2038839b175f696e9.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 283000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_5095e4e7be10ada305292788f0db4491 = L.circleMarker(
+                [-3.8119653, -38.5354226],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_5095e4e7be10ada305292788f0db4491.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 330954.16
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2a39d3251d32605a4c8887d3e35501b5 = L.circleMarker(
+                [-3.832964, -38.45991009999999],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_2a39d3251d32605a4c8887d3e35501b5.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 222870.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3b1152125389b83d5407642d243e81c6 = L.circleMarker(
+                [-3.7431082, -38.5011629],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_3b1152125389b83d5407642d243e81c6.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 452200.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0d0e3f323a3539bb57c0780f566565b5 = L.circleMarker(
+                [-3.801292, -38.5057423],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_0d0e3f323a3539bb57c0780f566565b5.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 147000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c0529bb0575ede004438d91c13bf030a = L.circleMarker(
+                [-3.8085214, -38.5450165],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_c0529bb0575ede004438d91c13bf030a.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 177000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_31636648a3af0712fbdc01e0c1a031f9 = L.circleMarker(
+                [-3.810301899999999, -38.5258225],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_31636648a3af0712fbdc01e0c1a031f9.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 176180.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b501d72c112f28d23a94b4d30405d713 = L.circleMarker(
+                [-3.8173784, -38.5072867],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_b501d72c112f28d23a94b4d30405d713.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 175000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_32b6248275f6d04e1742b57569008e88 = L.circleMarker(
+                [-3.7534463, -38.5420058],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_32b6248275f6d04e1742b57569008e88.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 863830.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_efe2bd8f06aa46bec7a9e563db136fe6 = L.circleMarker(
+                [-3.8442195, -38.51084970000001],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_efe2bd8f06aa46bec7a9e563db136fe6.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 172517.1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_44784d09682fec1e2c6c6059c7a7efe2 = L.circleMarker(
+                [-3.8439561, -38.4930956],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_44784d09682fec1e2c6c6059c7a7efe2.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 162880.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_774e5f7428d614e903ae30eef467b2c2 = L.circleMarker(
+                [-3.828243, -38.564801],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_774e5f7428d614e903ae30eef467b2c2.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 156000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1c3bd509af8061b0b23f8800ebfdacf2 = L.circleMarker(
+                [-3.8081792, -38.5747257],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_1c3bd509af8061b0b23f8800ebfdacf2.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 154400.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_86f0f339788e6581a95a6d9361b4d226 = L.circleMarker(
+                [-3.8275418, -38.5940218],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_86f0f339788e6581a95a6d9361b4d226.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 115142.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_43e3b43d366a08448a817ca3ece2b5da = L.circleMarker(
+                [-3.8476311, -38.5150619],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_43e3b43d366a08448a817ca3ece2b5da.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 200000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c41ff47af6f7c1d08a9efc42a9216194 = L.circleMarker(
+                [-3.775676, -38.6131457],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_c41ff47af6f7c1d08a9efc42a9216194.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 173078.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f524fd59d94f9962c96167ee716a5547 = L.circleMarker(
+                [-3.8156981, -38.5433806],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_f524fd59d94f9962c96167ee716a5547.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 188000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ea8ec0ac4aba403ba40e92954da7fdb1 = L.circleMarker(
+                [-3.8275418, -38.5940218],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_ea8ec0ac4aba403ba40e92954da7fdb1.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 107596.25
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_545b09d880205f8e77874dabea15f80f = L.circleMarker(
+                [-3.722624, -38.587494],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_545b09d880205f8e77874dabea15f80f.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 196605.18
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_37bce30928f82d0d1254be0438a138e5 = L.circleMarker(
+                [-3.7117278, -38.5708085],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_37bce30928f82d0d1254be0438a138e5.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 93000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_86b01e42619464e2d5251ea6f8d8d6b3 = L.circleMarker(
+                [-3.8696712, -38.5196372],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_86b01e42619464e2d5251ea6f8d8d6b3.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 76479.6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2d9dbac32c07d4ab88c1549216905d72 = L.circleMarker(
+                [-3.79827, -38.6205893],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_2d9dbac32c07d4ab88c1549216905d72.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 93116.4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d91f6625e52152c97a0bee859b888311 = L.circleMarker(
+                [-3.810301899999999, -38.5258225],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_d91f6625e52152c97a0bee859b888311.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 99172.5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_208128e94b68b4db2665545d03509dd2 = L.circleMarker(
+                [-3.7950555, -38.5022172],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_208128e94b68b4db2665545d03509dd2.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 413440.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_34ffead71e45b307debf6f1b3c7dc924 = L.circleMarker(
+                [-3.7373357, -38.5096859],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_34ffead71e45b307debf6f1b3c7dc924.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 831402.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_969c6022e97a94e908a836a84fa1befb = L.circleMarker(
+                [-3.8173229, -38.555157],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_969c6022e97a94e908a836a84fa1befb.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 193800.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_7c760ca4f83f6941ea61d5e8b44a375b = L.circleMarker(
+                [-3.706342999999999, -38.5808517],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_7c760ca4f83f6941ea61d5e8b44a375b.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 222224.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9f17e180ea2afea45b9fca7f37a67bb0 = L.circleMarker(
+                [-3.7853249, -38.6054519],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_9f17e180ea2afea45b9fca7f37a67bb0.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 518738.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_7547fdb04d2d7703acb61c6a8e23f1e4 = L.circleMarker(
+                [-3.786773, -38.4709422],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_7547fdb04d2d7703acb61c6a8e23f1e4.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 484500.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1700836e589eddeb8959213f0c2f9eab = L.circleMarker(
+                [-3.7577782, -38.5370009],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_1700836e589eddeb8959213f0c2f9eab.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 145350.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_dc4935ce06a6f0c15840434dfb4235c5 = L.circleMarker(
+                [-3.7843025, -38.4610697],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_dc4935ce06a6f0c15840434dfb4235c5.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 250002.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1ea69a96c1179033fe0a3c6f286164d2 = L.circleMarker(
+                [-3.817251, -38.469121],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_1ea69a96c1179033fe0a3c6f286164d2.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 245480.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_767be860e1fb8aea37490324e7a3fe4d = L.circleMarker(
+                [-3.7140619, -38.5904167],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_767be860e1fb8aea37490324e7a3fe4d.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 403104.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c2de4ee291106dad31326b782cdd508a = L.circleMarker(
+                [-3.7348667, -38.5170262],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_c2de4ee291106dad31326b782cdd508a.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 366928.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e09d2727d8b9e0c71ce0c3b7aeba2139 = L.circleMarker(
+                [-3.852055599999999, -38.4846721],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_e09d2727d8b9e0c71ce0c3b7aeba2139.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 103000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cd43fe1fc3dccb830e472a8788df7c1b = L.circleMarker(
+                [-3.7233857, -38.5172315],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_cd43fe1fc3dccb830e472a8788df7c1b.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 549846.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_046677ad22cc478dfe48daed5dc9fecf = L.circleMarker(
+                [-3.8048956, -38.6307423],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_046677ad22cc478dfe48daed5dc9fecf.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 78147.93
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e7034a9cb10eefc8b853c3dc5b63767f = L.circleMarker(
+                [-3.8104242, -38.481234],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_e7034a9cb10eefc8b853c3dc5b63767f.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 310744.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4d045e7acfcf41ecf6dd2c99a4fd9b74 = L.circleMarker(
+                [-3.756203699999999, -38.5322351],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_4d045e7acfcf41ecf6dd2c99a4fd9b74.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 231918.75
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1c1ffb9449fa7cf90215a571d657f69e = L.circleMarker(
+                [-19.9447184, -44.03622259999999],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_1c1ffb9449fa7cf90215a571d657f69e.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 330380.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c08ae66180d506d91aadaadc5c8a8c18 = L.circleMarker(
+                [-3.7887464, -38.548393],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_c08ae66180d506d91aadaadc5c8a8c18.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 97000.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e25197b2f9241b323057aff6f779d487 = L.circleMarker(
+                [-3.824865, -38.5935608],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_e25197b2f9241b323057aff6f779d487.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 88672.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d95a938a64fe51277e9363ea0ab77dcb = L.circleMarker(
+                [-3.8032636, -38.6301847],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_d95a938a64fe51277e9363ea0ab77dcb.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 63732.99
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e6b180626566dc83193a80c2e5b958bf = L.circleMarker(
+                [-3.7804523, -38.62121880000001],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_e6b180626566dc83193a80c2e5b958bf.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 117306.9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_127db6764f92ddd2ce0d2908331d2455 = L.circleMarker(
+                [-3.773790299999999, -38.6121551],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_127db6764f92ddd2ce0d2908331d2455.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 182172.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bdf6c24755bc89309d00c478f1dfb696 = L.circleMarker(
+                [-3.8296363, -38.5071343],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_bdf6c24755bc89309d00c478f1dfb696.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 84450.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b4e7689453ed76eb40d59da9d1ea1511 = L.circleMarker(
+                [-3.6982001, -38.5835779],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_b4e7689453ed76eb40d59da9d1ea1511.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 58936.79
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f82409dedf986c6827035abcbbf13c8b = L.circleMarker(
+                [-3.8049727, -38.6302149],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_f82409dedf986c6827035abcbbf13c8b.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 99756.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e70e91eb6fd250c647752e25d6a8129b = L.circleMarker(
+                [-3.7787834, -38.61355200000001],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_e70e91eb6fd250c647752e25d6a8129b.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 74804.4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d5f660b76cfd378c8b210f214424e8fc = L.circleMarker(
+                [-3.7930942, -38.6229405],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_d5f660b76cfd378c8b210f214424e8fc.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 76479.6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3ab063b3c2c80034258771c5f2de09c2 = L.circleMarker(
+                [-3.820607, -38.6048873],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_3ab063b3c2c80034258771c5f2de09c2.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 59299.4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6567d70705dcbd167e3bd5a9726c652b = L.circleMarker(
+                [-3.8059566, -38.6241216],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_6567d70705dcbd167e3bd5a9726c652b.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 94638.9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c3438fbaedb07250ef18399f0daa0a36 = L.circleMarker(
+                [-3.8275418, -38.5940218],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_c3438fbaedb07250ef18399f0daa0a36.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 63733.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ab1daa86a302182304e82bb7b900c17a = L.circleMarker(
+                [-3.7854732, -38.6083427],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_ab1daa86a302182304e82bb7b900c17a.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 109819.99
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ba89237755fe589db2ae096c3a933bb4 = L.circleMarker(
+                [-3.8173415, -38.5062889],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_ba89237755fe589db2ae096c3a933bb4.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 198968.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bb5b6a88ddc782249cbef92fb2e8fcb0 = L.circleMarker(
+                [-3.7761953, -38.6184206],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_bb5b6a88ddc782249cbef92fb2e8fcb0.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 158270.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_739c287de4d83c595fa7fd3b4f57ad2b = L.circleMarker(
+                [-3.8048956, -38.6307423],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_739c287de4d83c595fa7fd3b4f57ad2b.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 76811.2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_657d2636d148e865b499724f8cc02d09 = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_657d2636d148e865b499724f8cc02d09.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 353510.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_53beebfdb4a917a01befcdfacb4fe37f = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_53beebfdb4a917a01befcdfacb4fe37f.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 353510.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_78ac9f1d48343260c8824d725a196caf = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_78ac9f1d48343260c8824d725a196caf.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 353510.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_39a6dbdc263b19a01dbd1c46f3d8b7ee = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_39a6dbdc263b19a01dbd1c46f3d8b7ee.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 353510.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8afa52ef59aa037f2f1cf20af864ca47 = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_8afa52ef59aa037f2f1cf20af864ca47.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 365700.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1548bf4c897bde95340b468d505c0979 = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_1548bf4c897bde95340b468d505c0979.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 353510.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d80d67663d0cac7a0f67b1681bf62ed7 = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_d80d67663d0cac7a0f67b1681bf62ed7.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 365700.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bfabad03cfd9020d2f540ac1636b59cd = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_bfabad03cfd9020d2f540ac1636b59cd.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 365700.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_632aa344aa2298bb1a9378ef46c0dfe8 = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_632aa344aa2298bb1a9378ef46c0dfe8.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 353510.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_561e97e49b516526dede543595996d89 = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_561e97e49b516526dede543595996d89.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 353510.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_53e9d312595a6c4a83e1248c09d73bc9 = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_53e9d312595a6c4a83e1248c09d73bc9.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 353510.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d58a41bf77a0bda72db486284081cf81 = L.circleMarker(
+                [-3.732711299999999, -38.5104885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_b3a57053a83fbfb25314b50fb3a47697);
+        
+    
+            circle_marker_d58a41bf77a0bda72db486284081cf81.bindTooltip(
+                `<div>
+                     Valor do leilão: R$ 353510.0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

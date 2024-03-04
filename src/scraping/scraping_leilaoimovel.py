@@ -7,24 +7,51 @@ import requests
 from bs4 import BeautifulSoup
 import time
 
-inicio = time.time()
+# setup webdriver
+def setup_webdriver():
+    inicio = time.time()
+    options = webdriver.FirefoxOptions()
+    options.headless = True
+    service = FirefoxService(executable_path=r"drivers/geckodriver.exe")
+    driver = webdriver.Firefox(service=service, options=options)
+    return driver
 
+# return the number of pages in website
+def len_pages(website, driver):
+    driver.get(website)
+    id = driver.find_element(By.ID, 'pagination')
+    a = id.find_elements(By.TAG_NAME, 'a')[-2].text
+    return int(a)
 
-# get url of actual website and append to the links_list, the https://www.leilaoimovel.com.br/imoveis-springfield isn't added to the list
-def get_page_links(links_list):
+# get url of actual website and append to the links_list; the https://www.leilaoimovel.com.br/imoveis-springfield isn't added to the list
+def get_page_links(links_list, driver):
     properties = driver.find_elements(By.XPATH, "//div[@class='place-box']")
     for property in properties:
         if property.find_element(By.CLASS_NAME, 'Link_Redirecter').get_property('href') != 'https://www.leilaoimovel.com.br/imoveis-springfield':
             links_list.append(property.find_element(By.CLASS_NAME, 'Link_Redirecter').get_property('href'))
 
-def get_all_ad_links(links_list, website):
-    for num_page in range(1, len_pages(website)+1):
+# get all links of all pages of website
+def get_all_ad_links(website, driver):
+    links_list = []
+    for num_page in range(1, len_pages(website, driver)+1):
         currently_site = website + '?pag=' + str(num_page)
         driver.get(currently_site)
-        get_page_links(links_list)
+        get_page_links(links_list, driver)
+    return links_list
 
+# verify if 'Praça' is in the web page
+def auction_type(link): 
+    content = requests.get(link).content
+    site = BeautifulSoup(content, 'html.parser')
+    if 'Praça' in site.prettify() and 'única' not in site.prettify():
+        return 0
+    elif 'consultar'in site.prettify():
+        return 1
+    else:
+        return 2
 
-def extract_data(link):
+# web scraping algorithm for extract the important data of the link
+def extract_data(link, driver):
     driver.get(link)
 
     # VERIFY THE AUCTION TYPE
@@ -131,55 +158,30 @@ def extract_data(link):
         real_estate_registration = 0
     return [auction_price, total_area, util_area, bedrooms, car_vacancies, first_price, second_price, evaluation_price, start_date, end_date, first_date, second_date, auctioneer, registration, real_estate_registration, localization, ad_link]
 
-# verify if 'Praça' is in the web page
-def auction_type(link): 
-    content = requests.get(link).content
-    site = BeautifulSoup(content, 'html.parser')
-    if 'Praça' in site.prettify() and 'única' not in site.prettify():
-        return 0
-    elif 'consultar'in site.prettify():
-        return 1
-    else:
-        return 2
-
-# return the number of pages in website
-def len_pages(website):
-    driver.get(website)
-    a = driver.find_element(By.XPATH, r'/html/body/div/main/section[3]/div/div/div[2]/div/a[5]').get_property('href').split('=')[1]
-    return int(a)
 
 
-# SETUP THE FIREFOX WEBDRIVER
-options = webdriver.FirefoxOptions()
-options.headless = True
-service = FirefoxService(executable_path=r"drivers/geckodriver.exe")
-driver = webdriver.Firefox(service=service, options=options)
+def get_website():
+    with open(r"src\utils\websites.txt", "r") as websites:
+        website_list = []
+        for website in websites:
+            website_list.append(website) 
+        websites.close()
+    return website_list
 
-# DEFINE THE WEBSITES THAT WE WILL ACESS
-with open(r"src\utils\websites.txt", "r") as websites:
-    website_list = []
-    for website in websites:
-        website_list.append(website) 
-    websites.close()
-website = website_list[0]
 
-# ACESS THE WEBSITE
-links_list = []
-df_columns = ['Valor do Leilão', 'Área Total [m²]', 'Área Útil [m²]', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Data de Início', 'Data de Encerramento', 'Data 1a Praça', 'Data 2a Praça', 'Leiloeiro', 'Matrícula', 'Inscrição Imobiliária', 'Localização', 'Link']
-df = pd.DataFrame(columns=df_columns)
-# df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
+def create_n_save_df(website):
+    driver = setup_webdriver()
+    df_columns = ['Valor do Leilão', 'Área Total [m²]', 'Área Útil [m²]', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Data de Início', 'Data de Encerramento', 'Data 1a Praça', 'Data 2a Praça', 'Leiloeiro', 'Matrícula', 'Inscrição Imobiliária', 'Localização', 'Link']
+    df = pd.DataFrame(columns=df_columns)
 
-get_all_ad_links(links_list, website)
-
-for i in range(len(links_list)):
-    # print(f'{i} |', links_list[i], '\n')
-    currently_row = extract_data(links_list[i])
-    df.loc[len(df)] = currently_row
-    # df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
-
-fim = time.time()
-tempo_execucao = fim - inicio
-df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
-
-print(f"Tempo de execução: {tempo_execucao:.2f} segundos ({tempo_execucao/60}) minutos")
-
+    cidade = website.split('/')[-1]
+    
+    links_list = get_all_ad_links(website, driver)
+    
+    for i in range(len(links_list)):
+        print(f'{i} |', links_list[i], '\n')
+        currently_row = extract_data(links_list[i], driver)
+        df.loc[len(df)] = currently_row
+        df.to_excel(f'output//leilaoimoveis_{cidade}.xlsx', index=False)
+        # df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
+    df.to_excel(f'output//leilaoimoveis_{cidade}.xlsx', index=False)
