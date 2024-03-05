@@ -1,1 +1,3 @@
 venv/*
+src/mapping/__pycache__/*
+src/scraping/__pycache__/*
