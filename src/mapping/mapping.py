@@ -18,7 +18,9 @@ def get_coordinates(addres):
     
     
 
-def plot_map(dataframe, nome):
+def plot_map(dataframe, name):
+    collors = ['red', 'blue', 'green', 'orange', 'yellow', 'purple', 'black', 'pink', 'white']
+    types = []
     coordinates = get_coordinates(dataframe['Localização'][0])
     map = folium.Map(location=[-3.777014, -38.535588], zoom_start=12)
 
@@ -27,6 +29,6 @@ def plot_map(dataframe, nome):
         if len(coordinates) == 0:
             print('Endereço não encontrado:', dataframe['Link'][i])
             continue
-        folium.CircleMarker(location=coordinates, fill=True, radius=8, tooltip=(f'Valor do leilão: R$ {dataframe.iloc[i, 0]:,}'), popup=dataframe['Link'][i]).add_to(map)
-    map.save(f'output//map_{nome}.html')
+        folium.CircleMarker(location=coordinates, fill=True, radius=8, tooltip=(f'Valor do leilão: R$ {dataframe.iloc[i, 0]:,.0f}'), popup=dataframe['Link'][i]).add_to(map)
+    map.save(f'output//mapas//map_{name}.html')
 

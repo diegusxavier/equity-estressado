@@ -20,8 +20,12 @@ def setup_webdriver():
 def len_pages(website, driver):
     driver.get(website)
     id = driver.find_element(By.ID, 'pagination')
-    a = id.find_elements(By.TAG_NAME, 'a')[-2].text
-    return int(a)
+    a = id.find_elements(By.TAG_NAME, 'a')
+    if len(a) > 1:
+        a = int(a[-2].text)
+    else:
+        a = 1
+    return a
 
 # get url of actual website and append to the links_list; the https://www.leilaoimovel.com.br/imoveis-springfield isn't added to the list
 def get_page_links(links_list, driver):
@@ -40,22 +44,22 @@ def get_all_ad_links(website, driver):
     return links_list
 
 # verify if 'Praça' is in the web page
-def auction_type(link): 
-    content = requests.get(link).content
-    site = BeautifulSoup(content, 'html.parser')
-    if 'Praça' in site.prettify() and 'única' not in site.prettify():
-        return 0
-    elif 'consultar'in site.prettify():
-        return 1
-    else:
-        return 2
+# def auction_type(link): 
+#     content = requests.get(link).content
+#     site = BeautifulSoup(content, 'html.parser')
+#     if 'Praça' in site.prettify() and 'única' not in site.prettify():
+#         return 0
+#     elif 'consultar'in site.prettify():
+#         return 1
+#     else:
+#         return 2
 
 # web scraping algorithm for extract the important data of the link
 def extract_data(link, driver):
     driver.get(link)
 
     # VERIFY THE AUCTION TYPE
-    type = auction_type(link)
+    # type = auction_type(link)
 
     # 1 - SPATIAL INFO
     total_area = None 
@@ -66,6 +70,7 @@ def extract_data(link, driver):
     # UNFORMATED INFOS - infos that aren't common to each other
     auction_price = None 
     evaluation_price = None 
+    cash_price = None
     discount = None 
     first_price = None 
     second_price = None 
@@ -76,6 +81,8 @@ def extract_data(link, driver):
     auctioneer = None
     real_estate_registration = None
     registration = None
+    property_type = None
+    type_of_sale = None
 
     localization = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[1]/div[2]/div/div/p').text
     ad_link = link
@@ -91,6 +98,10 @@ def extract_data(link, driver):
             registration = div.text.split()[-1]
         if 'Inscrição' in div.text and len(div.text.split()) < 20:
             real_estate_registration = div.text.split()[-1]
+        if 'Tipo' in div.text and len(div.text.split()) < 20:
+            type_of_sale = div.text.split('/')[-1]
+            property_type = div.text.split('/')[0].split(':')[-1]
+
     if 'Encerra' in BeautifulSoup(requests.get(link).content, 'html.parser').prettify(): # pode ter erro
         end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[2]
 
@@ -131,6 +142,15 @@ def extract_data(link, driver):
             auctioneer = div.text.split(':')[1]
             if 'CRECI' in div.text:
                 auctioneer = auctioneer.split('CRECI')[0]
+        elif 'vista' in div.text:
+            if first_price != None:
+                cash_price = (div.text.split()[4])
+            else:
+                cash_price = first_price
+    
+    # title = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div')
+    # type = title.find_element(By.TAG_NAME, 'h1').text
+    # type = type.split()[0]
 
         # if 'Encerra' in BeautifulSoup(requests.get(link).content, 'html.parser').prettify():
         #     end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[2]
@@ -150,13 +170,15 @@ def extract_data(link, driver):
         second_price = float(second_price.replace('.', '').replace(',', '.'))
     if evaluation_price != None:
         evaluation_price = float(evaluation_price.replace('.', '').replace(',', '.'))
+    if cash_price != None:
+        cash_price = float(cash_price.replace('.', '').replace(',', '.'))
     if registration != None and registration.isnumeric():
         int(registration)
     if real_estate_registration != None and real_estate_registration.isnumeric():
         int(real_estate_registration)
     else:
         real_estate_registration = 0
-    return [auction_price, total_area, util_area, bedrooms, car_vacancies, first_price, second_price, evaluation_price, start_date, end_date, first_date, second_date, auctioneer, registration, real_estate_registration, localization, ad_link]
+    return [property_type, auction_price, total_area, util_area, bedrooms, car_vacancies, first_price, second_price, evaluation_price, cash_price,start_date, end_date, first_date, second_date, type_of_sale, auctioneer, registration, real_estate_registration, localization, ad_link]
 
 
 
@@ -168,20 +190,28 @@ def get_website():
         websites.close()
     return website_list
 
+def page_exists(website):
+    content = requests.get(website).content
+    site = BeautifulSoup(content, 'html.parser')
+    if 'A página que você está procurando não existe' in site.prettify():
+        cidade_errada = website.split('/')[-1]
+        print(f'A cidade {cidade_errada} não existe ou foi digitada errada.')
+        return 0
+    else: 
+        return 1
 
-def create_n_save_df(website):
-    driver = setup_webdriver()
-    df_columns = ['Valor do Leilão', 'Área Total [m²]', 'Área Útil [m²]', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Data de Início', 'Data de Encerramento', 'Data 1a Praça', 'Data 2a Praça', 'Leiloeiro', 'Matrícula', 'Inscrição Imobiliária', 'Localização', 'Link']
-    df = pd.DataFrame(columns=df_columns)
+def create_n_save_df(website, driver):
+    if page_exists(website) == 1:
+        df_columns = ['Tipo de Imóvel','Valor do Leilão', 'Área Total [m²]', 'Área Útil [m²]', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Valor à Vista', 'Data de Início', 'Data de Encerramento', 'Data 1a Praça', 'Data 2a Praça', 'Tipo de Venda', 'Leiloeiro', 'Matrícula', 'Inscrição Imobiliária', 'Localização', 'Link']
+        df = pd.DataFrame(columns=df_columns)
 
-    cidade = website.split('/')[-1]
-    
-    links_list = get_all_ad_links(website, driver)
-    
-    for i in range(len(links_list)):
-        print(f'{i} |', links_list[i], '\n')
-        currently_row = extract_data(links_list[i], driver)
-        df.loc[len(df)] = currently_row
-        df.to_excel(f'output//leilaoimoveis_{cidade}.xlsx', index=False)
-        # df.to_excel(r'output/leilaoimoveis.xlsx', index=False)
-    df.to_excel(f'output//leilaoimoveis_{cidade}.xlsx', index=False)
+        cidade = website.split('/')[-1]
+        
+        links_list = get_all_ad_links(website, driver)
+        
+        for i in range(len(links_list)):
+            # print(f'{i} |', links_list[i], '\n')
+            currently_row = extract_data(links_list[i], driver)
+            df.loc[len(df)] = currently_row
+            # df.to_excel(f'output//leilaoimoveis_{cidade}.xlsx', index=False)
+        df.to_excel(f'output//planilhas//leilaoimoveis_{cidade}.xlsx', index=False)
