@@ -27,6 +27,7 @@ def chose_plot_map():
         print(i+1, '-', sheets[i])
     while True:
         input_command = int(input('Digite o número da tabela que deseja mapear: '))
+        print('\n')
         if input_command in range(len(sheets) + 1):
             break
         else:
@@ -38,18 +39,33 @@ def chose_plot_map():
 
 def concat_df():
     sheets = os.listdir(r'output\planilhas')
-    for i in range(len(sheets)):
+    for i in range(len(sheets)): # imprime as planilhas disponíveis
         print(i+1, '-', sheets[i])
-    while True:
+    while True: # while para digitar o número correto
+        invalid_index = 0 # para verificar se todos os dígitos são corretos
         sheets_index = input('Digite os número da planilhas que deseja concatenar: ').split()
-        for i in sheets_index:
+        for i in range(len(sheets_index)): # transformar em inteiro
             sheets_index[i] = int(sheets_index[i])
-        if sheets_index in range(len(sheets) + 1):
+        for index in sheets_index: # for para manter ou sair do laço que verifica se os índices escritos são corretos
+            if index not in list(range(len(sheets) + 1)):
+                print('----\nDIGITE UM NÚMERO VÁLIDO!')
+                invalid_index = 1
+                break
+        if invalid_index == 0:
             break
-        else:
-            print('----\nDIGITE UM NÚMERO VÁLIDO!')
-    df = pd.read_excel('output\\planilhas\\' + sheets[sheets_index[0]])
-    if len(sheets_index) > 1:
+
+    sheet_name = []
+    new_sheet_name = ''
+    sheet_name.append(sheets[sheets_index[0]-1])
+    df = pd.read_excel('output\\planilhas\\' + sheets[sheets_index[0]-1]) # define primeira planilha
+    if len(sheets_index) > 1: # verifica se não foi apenas uma planilha selecionada
         for i in range(1, len(sheets_index)):
-            df_new =  pd.read_excel('output\\planilhas\\' + sheets[sheets_index[i]])
+            df_new =  pd.read_excel('output\\planilhas\\' + sheets[sheets_index[i]-1])
+            sheet_name.append(sheets[sheets_index[i]-1])
             df = pd.concat([df, df_new])
+        for name in sheet_name:
+            new_sheet_name += '-' + name.split('_')[1].split('.')[0][0:-3]
+        new_sheet_name = new_sheet_name[1:]
+        df.to_excel(f'output//planilhas//{new_sheet_name}.xlsx', index=False)
+    else:
+        print('----\nNão é possível concatenar apenas uma planilha')

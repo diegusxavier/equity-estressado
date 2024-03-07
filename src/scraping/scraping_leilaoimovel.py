@@ -96,8 +96,12 @@ def extract_data(link, driver):
         if 'Inscrição' in div.text and len(div.text.split()) < 20:
             real_estate_registration = div.text.split()[-1]
         if 'Tipo' in div.text and len(div.text.split()) < 20:
-            type_of_sale = div.text.split('/')[-1].replace(' ', '')
+            type_of_sale = div.text.split('/')[-1]
             property_type = div.text.split('/')[0].split(':')[-1]
+            if property_type[-1] == ' ':
+                property_type = property_type[0:-1]
+            if property_type[0] == ' ':
+                property_type = property_type[1:]
 
     if 'Encerra' in BeautifulSoup(requests.get(link).content, 'html.parser').prettify(): # pode ter erro
         end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[2]
