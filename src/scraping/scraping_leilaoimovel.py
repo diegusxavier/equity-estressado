@@ -1,15 +1,12 @@
 import pandas as pd
-from time import sleep
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.common.by import By
 import requests
 from bs4 import BeautifulSoup
-import time
 
 # setup webdriver
 def setup_webdriver():
-    inicio = time.time()
     options = webdriver.FirefoxOptions()
     options.headless = True
     service = FirefoxService(executable_path=r"drivers/geckodriver.exe")
@@ -99,7 +96,7 @@ def extract_data(link, driver):
         if 'Inscrição' in div.text and len(div.text.split()) < 20:
             real_estate_registration = div.text.split()[-1]
         if 'Tipo' in div.text and len(div.text.split()) < 20:
-            type_of_sale = div.text.split('/')[-1]
+            type_of_sale = div.text.split('/')[-1].replace(' ', '')
             property_type = div.text.split('/')[0].split(':')[-1]
 
     if 'Encerra' in BeautifulSoup(requests.get(link).content, 'html.parser').prettify(): # pode ter erro
@@ -210,7 +207,7 @@ def create_n_save_df(website, driver):
         links_list = get_all_ad_links(website, driver)
         
         for i in range(len(links_list)):
-            # print(f'{i} |', links_list[i], '\n')
+            print(f'{i} |', links_list[i], '\n')
             currently_row = extract_data(links_list[i], driver)
             df.loc[len(df)] = currently_row
             # df.to_excel(f'output//leilaoimoveis_{cidade}.xlsx', index=False)

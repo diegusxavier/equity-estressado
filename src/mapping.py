@@ -1,6 +1,5 @@
 import googlemaps
 import folium
-import pandas as pd
 
 gmaps = googlemaps.Client(key='AIzaSyCzQIxBQDxD-9apyT4gdRzcKVCgsGi1cBM')
 
@@ -21,14 +20,22 @@ def get_coordinates(addres):
 def plot_map(dataframe, name):
     collors = ['red', 'blue', 'green', 'orange', 'yellow', 'purple', 'black', 'pink', 'white']
     types = []
-    coordinates = get_coordinates(dataframe['Localização'][0])
-    map = folium.Map(location=[-3.777014, -38.535588], zoom_start=12)
+    i = 0
+    while True:
+        if i == dataframe.shape[0]:
+            print('Nenhum endereço encontrado.')
+            return '-1'
+        coordinates = get_coordinates(dataframe['Localização'][i])
+        if len(coordinates) != 0:
+            map = folium.Map(location=coordinates, zoom_start=12)
+            break
+        i += 1
 
     for i in range(dataframe.shape[0]):
         coordinates = get_coordinates(dataframe['Localização'][i])
         if len(coordinates) == 0:
             print('Endereço não encontrado:', dataframe['Link'][i])
             continue
-        folium.CircleMarker(location=coordinates, fill=True, radius=8, tooltip=(f'Valor do leilão: R$ {dataframe.iloc[i, 0]:,.0f}'), popup=dataframe['Link'][i]).add_to(map)
+        folium.CircleMarker(location=coordinates, fill=True, radius=8, tooltip=(f'Valor do leilão: R$ {dataframe.iloc[i, 1]:,.2f}'), popup=dataframe['Link'][i]).add_to(map)
     map.save(f'output//mapas//map_{name}.html')
 
