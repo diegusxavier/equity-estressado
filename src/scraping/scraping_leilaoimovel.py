@@ -40,16 +40,6 @@ def get_all_ad_links(website, driver):
         get_page_links(links_list, driver)
     return links_list
 
-# verify if 'Praça' is in the web page
-# def auction_type(link): 
-#     content = requests.get(link).content
-#     site = BeautifulSoup(content, 'html.parser')
-#     if 'Praça' in site.prettify() and 'única' not in site.prettify():
-#         return 0
-#     elif 'consultar'in site.prettify():
-#         return 1
-#     else:
-#         return 2
 
 # web scraping algorithm for extract the important data of the link
 def extract_data(link, driver):
@@ -68,7 +58,7 @@ def extract_data(link, driver):
     auction_price = None 
     evaluation_price = None 
     cash_price = None
-    discount = None 
+    discount = 0.0 
     first_price = None 
     second_price = None 
     start_date = None 
@@ -148,13 +138,10 @@ def extract_data(link, driver):
                 cash_price = (div.text.split()[4])
             else:
                 cash_price = first_price
+            if '%' in div.text:
+                print(div.text)
     
-    # title = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div')
-    # type = title.find_element(By.TAG_NAME, 'h1').text
-    # type = type.split()[0]
 
-        # if 'Encerra' in BeautifulSoup(requests.get(link).content, 'html.parser').prettify():
-        #     end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[2]
 
     if auction_price != None:
         if 'consultar' in auction_price:
@@ -173,13 +160,27 @@ def extract_data(link, driver):
         evaluation_price = float(evaluation_price.replace('.', '').replace(',', '.'))
     if cash_price != None:
         cash_price = float(cash_price.replace('.', '').replace(',', '.'))
+    if discount != None:
+        discount = float(discount.replace('.', '').replace(',', '.'))
     if registration != None and registration.isnumeric():
         int(registration)
     if real_estate_registration != None and real_estate_registration.isnumeric():
         int(real_estate_registration)
     else:
         real_estate_registration = 0
-    return [property_type, auction_price, total_area, util_area, bedrooms, car_vacancies, first_price, second_price, evaluation_price, cash_price,start_date, end_date, first_date, second_date, type_of_sale, auctioneer, registration, real_estate_registration, localization, ad_link]
+
+    # discount calc
+    if first_price != None and second_price != None:
+        if first_price > second_price:
+            discount = (first_price - second_price)/first_price
+    elif evaluation_price != None and cash_price != None:
+        discount = (evaluation_price - cash_price)/evaluation_price
+    elif evaluation_price != None:
+        discount = (evaluation_price - auction_price)/evaluation_price
+
+    discount = discount*100    
+
+    return [property_type, auction_price, total_area, util_area, bedrooms, car_vacancies, first_price, second_price, evaluation_price, cash_price, discount, start_date, end_date, first_date, second_date, type_of_sale, auctioneer, registration, real_estate_registration, localization, ad_link]
 
 
 
@@ -203,7 +204,7 @@ def page_exists(website):
 
 def create_n_save_df(website, driver):
     if page_exists(website) == 1:
-        df_columns = ['Tipo de Imóvel','Valor do Leilão', 'Área Total [m²]', 'Área Útil [m²]', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Valor à Vista', 'Data de Início', 'Data de Encerramento', 'Data 1a Praça', 'Data 2a Praça', 'Tipo de Venda', 'Leiloeiro', 'Matrícula', 'Inscrição Imobiliária', 'Localização', 'Link']
+        df_columns = ['Tipo de Imóvel','Valor do Leilão', 'Área Total [m²]', 'Área Útil [m²]', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Valor à Vista', 'Desconto','Data de Início', 'Data de Encerramento', 'Data 1a Praça', 'Data 2a Praça', 'Tipo de Venda', 'Leiloeiro', 'Matrícula', 'Inscrição Imobiliária', 'Localização', 'Link']
         df = pd.DataFrame(columns=df_columns)
 
         cidade = website.split('/')[-1]
