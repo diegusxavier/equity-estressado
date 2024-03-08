@@ -138,11 +138,8 @@ def extract_data(link, driver):
                 cash_price = (div.text.split()[4])
             else:
                 cash_price = first_price
-            if '%' in div.text:
-                print(div.text)
-    
 
-
+                
     if auction_price != None:
         if 'consultar' in auction_price:
             auction_price = None
@@ -160,8 +157,6 @@ def extract_data(link, driver):
         evaluation_price = float(evaluation_price.replace('.', '').replace(',', '.'))
     if cash_price != None:
         cash_price = float(cash_price.replace('.', '').replace(',', '.'))
-    if discount != None:
-        discount = float(discount.replace('.', '').replace(',', '.'))
     if registration != None and registration.isnumeric():
         int(registration)
     if real_estate_registration != None and real_estate_registration.isnumeric():
