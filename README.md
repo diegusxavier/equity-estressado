@@ -1,5 +1,9 @@
 # Equity Estressado
 
+Projeto de automação do processo de extração de dados de sites (web scraping) de leilão de imóveis utilizando Python e a biblioteca Selenium. Os dados são salvos em planilhas em formato `.xlsx` e o mapeamento da região dos imóveis é salvo em formato `.html`.
+
+No presente momento, o programa é configurado apenas para realizar a extração de apenas um site [serão adicionados mais sites em breve].
+
 ## Como utilizar
 
 1 - Baixe o navegador Firefox. O Chrome está com um problema de versão.
@@ -22,7 +26,7 @@ Entretanto, pode minimizar as telas enquanto o programa roda em segundo plano.
         -> Exemplo 1: fortaleza-ce aquiraz-ce eusebio-ce maracanau-ce
 
 ### Mapeamento
-- O mapeamento é um processo rápido e vai gerar mapas em arquivos .html, que podem ser abertos em quaisquer navegador.
+- O mapeamento é um processo rápido e vai gerar mapas em arquivos `.html`, que podem ser abertos em quaisquer navegador.
 - O mapeamento recebe uma planilha como parâmetro, ou seja, você só vai poder mapear as regiões em que houve extração de dados e a planilha está presente em sua respectiva pasta.
 - Basta apenas digitar o número referente a planilha para fazer o mapeamento.
     Diferentemente da extração de dados, nessa função você não pode tentar digitar mais de um número para o mapeamento [ideia de melhorias futuras].
@@ -36,7 +40,7 @@ Entretanto, pode minimizar as telas enquanto o programa roda em segundo plano.
 
 ## Avisos importantes
 - No diretório atual, não modifique o nome nem o endereço de nenhuma das pastas contidas nele.
-- Não modifique nenhum dos arquivos com as extensões .py, .txt, .exe, .md, .xlsx.
+- Não modifique nenhum dos arquivos com as extensões `.py`, `.txt`, `.exe`, `.md`, `.xlsx`.
 - Você pode recortar arquivos das pastas output/planilhas e output.mapas e movê-los para outras pastas (que não seja desse diretório).
 - Caso queira o arquivo endereco_nao_encontrado.txt, copie e cole-o onde deseja. Não remova o arquivo da pasta.
 - Você pode adicionar novas planilhas à pasta output/planilhas, mas deve tomar a seguinte precaução:
