@@ -6,7 +6,8 @@ No presente momento, o programa é configurado apenas para realizar a extração
 
 ## Como utilizar
 
-1 - Baixe o navegador Firefox. O Chrome está com um problema de versão.
+1 - Baixe o navegador Firefox e salve-o na pasta padrão de instalação. O Chrome está com um problema de versão.
+    (Caso o Firefox esteja em outra localização, modifique a linha 11 de [scraping_leilaoimovel.py](./src/scraping/scraping_leilaoimovel.py) com o caminho desejado)
 2 - Execute o arquivo main.exe. Será aberto a janela preta do Terminal. Aguarde até aparecerem as opções de intruções.
     (Caso o antivírus alerte, permita que o programa execute)
 3 - Leia as instruções que aparece na tela do Terminal e execute as operações desejadas.
