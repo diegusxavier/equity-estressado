@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 # setup webdriver
 def setup_webdriver():
     options = webdriver.FirefoxOptions()
-    options.binary_location = r'C:\Program Files\Mozilla Firefox\F'
+    options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
     options.headless = True
     service = FirefoxService(executable_path=r"drivers/geckodriver.exe")
     driver = webdriver.Firefox(service=service, options=options)
