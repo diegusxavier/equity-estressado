@@ -1,0 +1,1 @@
+Esse arquivo serve apenas para que a pasta 'output/mapas' seja enviada para o github
