@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4417806e0a1b8e76cd30f6b4db87387d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_4417806e0a1b8e76cd30f6b4db87387d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4417806e0a1b8e76cd30f6b4db87387d = L.map(
+                "map_4417806e0a1b8e76cd30f6b4db87387d",
+                {
+                    center: [-3.9087255, -38.3769913],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_20b75287dba96a05b0b4f1bcb22c01e0 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_20b75287dba96a05b0b4f1bcb22c01e0.addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+            var circle_marker_0b468eff37ba1e0fec65089040d79038 = L.circleMarker(
+                [-3.9087255, -38.3769913],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_04576770c4576931e8e92a14a412106a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2baa607d5d8dac7ae508930c2c45ae78 = $(`<div id="html_2baa607d5d8dac7ae508930c2c45ae78" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/residencial-rotta-del-mar-2-quartos-wc-sala-cozinha-imovel-caixa-economica-federal-cef-1625939-8444423002750-venda-direta-caixa</div>`)[0];
+                popup_04576770c4576931e8e92a14a412106a.setContent(html_2baa607d5d8dac7ae508930c2c45ae78);
+            
+        
+
+        circle_marker_0b468eff37ba1e0fec65089040d79038.bindPopup(popup_04576770c4576931e8e92a14a412106a)
+        ;
+
+        
+    
+    
+            circle_marker_0b468eff37ba1e0fec65089040d79038.bindTooltip(
+                `<div>
+                     Casa - R$ 176,124.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3eeaebc36e3443513263b5d3813a067d = L.circleMarker(
+                [-3.906286399999999, -38.3874738],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_502cfce6677148e09765e2b64758e84d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_34f2e7f99968f8989fbe02ece160f5b6 = $(`<div id="html_34f2e7f99968f8989fbe02ece160f5b6" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/residencial-pq-entre-praias-imovel-caixa-economica-federal-cef-1600178-8444407824384-venda-direta-caixa</div>`)[0];
+                popup_502cfce6677148e09765e2b64758e84d.setContent(html_34f2e7f99968f8989fbe02ece160f5b6);
+            
+        
+
+        circle_marker_3eeaebc36e3443513263b5d3813a067d.bindPopup(popup_502cfce6677148e09765e2b64758e84d)
+        ;
+
+        
+    
+    
+            circle_marker_3eeaebc36e3443513263b5d3813a067d.bindTooltip(
+                `<div>
+                     Casa - R$ 145,000.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_25bb815e9f3282f490f1534658c9844c = L.circleMarker(
+                [-3.85454, -38.3830108],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_b48359ddd75fa37b0bf99031acd4f0d6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_505702538915d2c03ad705bc864f62e3 = $(`<div id="html_505702538915d2c03ad705bc864f62e3" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/residencial-cond-porto-riviera-3-quartos-2-vagas-na-garagem-varanda-sacada-area-de-se-imovel-caixa-economica-federal-cef-1218909-1555512336347-venda-direta-caixa</div>`)[0];
+                popup_b48359ddd75fa37b0bf99031acd4f0d6.setContent(html_505702538915d2c03ad705bc864f62e3);
+            
+        
+
+        circle_marker_25bb815e9f3282f490f1534658c9844c.bindPopup(popup_b48359ddd75fa37b0bf99031acd4f0d6)
+        ;
+
+        
+    
+    
+            circle_marker_25bb815e9f3282f490f1534658c9844c.bindTooltip(
+                `<div>
+                     Casa - R$ 627,130.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a31e64af4be85267d9ae894e3f4b943a = L.circleMarker(
+                [-3.906286399999999, -38.3874738],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_d7419ac92fbe87613805bbed9ac48315 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cb732d0691b0f7c63229284102fbebc7 = $(`<div id="html_cb732d0691b0f7c63229284102fbebc7" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/terreno-lote-residencial-curralinho-idr176567-desocupado-imovel-1291388</div>`)[0];
+                popup_d7419ac92fbe87613805bbed9ac48315.setContent(html_cb732d0691b0f7c63229284102fbebc7);
+            
+        
+
+        circle_marker_a31e64af4be85267d9ae894e3f4b943a.bindPopup(popup_d7419ac92fbe87613805bbed9ac48315)
+        ;
+
+        
+    
+    
+            circle_marker_a31e64af4be85267d9ae894e3f4b943a.bindTooltip(
+                `<div>
+                     Terreno - R$ 390,080.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a80ff7b78b554f77c4010e5e5fa13304 = L.circleMarker(
+                [-3.906286399999999, -38.3874738],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_38f3e7cc904fb371d98d6c4740bdf7cd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d4ad135cd1dcae61ce7b80fc2161fb4d = $(`<div id="html_d4ad135cd1dcae61ce7b80fc2161fb4d" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/terreno-lote-residencial-curralinho-idr176568-desocupado-imovel-1291387</div>`)[0];
+                popup_38f3e7cc904fb371d98d6c4740bdf7cd.setContent(html_d4ad135cd1dcae61ce7b80fc2161fb4d);
+            
+        
+
+        circle_marker_a80ff7b78b554f77c4010e5e5fa13304.bindPopup(popup_38f3e7cc904fb371d98d6c4740bdf7cd)
+        ;
+
+        
+    
+    
+            circle_marker_a80ff7b78b554f77c4010e5e5fa13304.bindTooltip(
+                `<div>
+                     Terreno - R$ 414,460.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2d4a1081f425e47a490d38e0326bbda6 = L.circleMarker(
+                [-3.906286399999999, -38.3874738],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_792750951f884bff1bb8e6ca9a07b38d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_493b652779b24ae26e536afcb1044b52 = $(`<div id="html_493b652779b24ae26e536afcb1044b52" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/terreno-lote-residencial-curralinho-idr176569-desocupado-imovel-1291386</div>`)[0];
+                popup_792750951f884bff1bb8e6ca9a07b38d.setContent(html_493b652779b24ae26e536afcb1044b52);
+            
+        
+
+        circle_marker_2d4a1081f425e47a490d38e0326bbda6.bindPopup(popup_792750951f884bff1bb8e6ca9a07b38d)
+        ;
+
+        
+    
+    
+            circle_marker_2d4a1081f425e47a490d38e0326bbda6.bindTooltip(
+                `<div>
+                     Terreno - R$ 950,820.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_dd64f363d8e51155cf19e2b4ecb59a3d = L.circleMarker(
+                [-3.906286399999999, -38.3874738],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_17405b1c979a3dfb6706ba8b44e85e2a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ad497ce678002196febd768c20c9c426 = $(`<div id="html_ad497ce678002196febd768c20c9c426" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/terreno-lote-residencial-curralinho-idr176570-desocupado-imovel-1291384</div>`)[0];
+                popup_17405b1c979a3dfb6706ba8b44e85e2a.setContent(html_ad497ce678002196febd768c20c9c426);
+            
+        
+
+        circle_marker_dd64f363d8e51155cf19e2b4ecb59a3d.bindPopup(popup_17405b1c979a3dfb6706ba8b44e85e2a)
+        ;
+
+        
+    
+    
+            circle_marker_dd64f363d8e51155cf19e2b4ecb59a3d.bindTooltip(
+                `<div>
+                     Terreno - R$ 451,030.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_34161e08ff68904f421c4218ffd1840b = L.circleMarker(
+                [-3.906286399999999, -38.3874738],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_ba680ecc2998b76eddb830bedde5b3dc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e93d14ed4ee40e97c778582659130c1c = $(`<div id="html_e93d14ed4ee40e97c778582659130c1c" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/terreno-lote-residencial-curralinho-idr176571-desocupado-imovel-1291383</div>`)[0];
+                popup_ba680ecc2998b76eddb830bedde5b3dc.setContent(html_e93d14ed4ee40e97c778582659130c1c);
+            
+        
+
+        circle_marker_34161e08ff68904f421c4218ffd1840b.bindPopup(popup_ba680ecc2998b76eddb830bedde5b3dc)
+        ;
+
+        
+    
+    
+            circle_marker_34161e08ff68904f421c4218ffd1840b.bindTooltip(
+                `<div>
+                     Terreno - R$ 426,650.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9561de0be16809077c27988056117404 = L.circleMarker(
+                [-3.906286399999999, -38.3874738],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_aaebd8ec39c4f087869a76ac296a3710 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_12152180f54fe5f9a49c2ae087f5423d = $(`<div id="html_12152180f54fe5f9a49c2ae087f5423d" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/terreno-lote-residencial-curralinho-idr176572-desocupado-imovel-1291382</div>`)[0];
+                popup_aaebd8ec39c4f087869a76ac296a3710.setContent(html_12152180f54fe5f9a49c2ae087f5423d);
+            
+        
+
+        circle_marker_9561de0be16809077c27988056117404.bindPopup(popup_aaebd8ec39c4f087869a76ac296a3710)
+        ;
+
+        
+    
+    
+            circle_marker_9561de0be16809077c27988056117404.bindTooltip(
+                `<div>
+                     Terreno - R$ 414,460.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_538389164ebcf9c3b21baa6b710fba8e = L.circleMarker(
+                [-3.906286399999999, -38.3874738],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_1934c7f3b31060cf9fe8d15ccc3d2134 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fd5ae9713f56dce7149f03b489c095a3 = $(`<div id="html_fd5ae9713f56dce7149f03b489c095a3" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/terreno-lote-residencial-curralinho-idr176573-desocupado-imovel-1291381</div>`)[0];
+                popup_1934c7f3b31060cf9fe8d15ccc3d2134.setContent(html_fd5ae9713f56dce7149f03b489c095a3);
+            
+        
+
+        circle_marker_538389164ebcf9c3b21baa6b710fba8e.bindPopup(popup_1934c7f3b31060cf9fe8d15ccc3d2134)
+        ;
+
+        
+    
+    
+            circle_marker_538389164ebcf9c3b21baa6b710fba8e.bindTooltip(
+                `<div>
+                     Terreno - R$ 487,600.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a206af6bdc336a0ec4ce53101911ce87 = L.circleMarker(
+                [-3.901564399999999, -38.3495005],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_e77e69acad8fd777f0c1d46b359f6258 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d8352e512c76489dc5a55eda2a45d8b8 = $(`<div id="html_d8352e512c76489dc5a55eda2a45d8b8" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/residencial-casa-residencial-parque-da-prainha-3-dormitorio-s-2-vaga-s-de-garagem-idr177409-imovel-1551713</div>`)[0];
+                popup_e77e69acad8fd777f0c1d46b359f6258.setContent(html_d8352e512c76489dc5a55eda2a45d8b8);
+            
+        
+
+        circle_marker_a206af6bdc336a0ec4ce53101911ce87.bindPopup(popup_e77e69acad8fd777f0c1d46b359f6258)
+        ;
+
+        
+    
+    
+            circle_marker_a206af6bdc336a0ec4ce53101911ce87.bindTooltip(
+                `<div>
+                     Casa - R$ 155,665.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_de4ee0067f4ae478f0b69b7cfc3d32fd = L.circleMarker(
+                [-3.8368093, -38.3960876],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_19a7154a11c65c2602d4081754918dee = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d8809cf1b90bd777614cabcd316860a6 = $(`<div id="html_d8809cf1b90bd777614cabcd316860a6" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/residencial-apartamento-graia-aquiraz-ce-desocupado-imovel-1628765</div>`)[0];
+                popup_19a7154a11c65c2602d4081754918dee.setContent(html_d8809cf1b90bd777614cabcd316860a6);
+            
+        
+
+        circle_marker_de4ee0067f4ae478f0b69b7cfc3d32fd.bindPopup(popup_19a7154a11c65c2602d4081754918dee)
+        ;
+
+        
+    
+    
+            circle_marker_de4ee0067f4ae478f0b69b7cfc3d32fd.bindTooltip(
+                `<div>
+                     Apartamento - R$ 810,000.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_96d0f21cad3397483dd4a56d258e5f49 = L.circleMarker(
+                [-3.949544, -38.3508173],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_88214e5ce457c7aa65a445c5c74e7fba = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_94758e35f13e71701fb533074ef505e0 = $(`<div id="html_94758e35f13e71701fb533074ef505e0" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/residencial-ap-302-bg-21-manhattan-beach-riviera-imovel-1625677</div>`)[0];
+                popup_88214e5ce457c7aa65a445c5c74e7fba.setContent(html_94758e35f13e71701fb533074ef505e0);
+            
+        
+
+        circle_marker_96d0f21cad3397483dd4a56d258e5f49.bindPopup(popup_88214e5ce457c7aa65a445c5c74e7fba)
+        ;
+
+        
+    
+    
+            circle_marker_96d0f21cad3397483dd4a56d258e5f49.bindTooltip(
+                `<div>
+                     Apartamento - R$ 2,250,000.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f3f95e69f5ee0173e7953c717b3d7638 = L.circleMarker(
+                [-22.5008499, -44.0154515],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_204de2912430128f5ed4e206a662686d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8d954f6de35d770543c20926ba01cb10 = $(`<div id="html_8d954f6de35d770543c20926ba01cb10" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/residencial-casa-imovel-caixa-economica-federal-cef-1612271</div>`)[0];
+                popup_204de2912430128f5ed4e206a662686d.setContent(html_8d954f6de35d770543c20926ba01cb10);
+            
+        
+
+        circle_marker_f3f95e69f5ee0173e7953c717b3d7638.bindPopup(popup_204de2912430128f5ed4e206a662686d)
+        ;
+
+        
+    
+    
+            circle_marker_f3f95e69f5ee0173e7953c717b3d7638.bindTooltip(
+                `<div>
+                     Casa - R$ 368,000.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_00f3a960259a16645fd2dde1f73fe4fe = L.circleMarker(
+                [-3.9062715, -38.3874893],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_4eb12d2672c188afeb074f28ea58e313 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e0e0c4ef827c0a4a144bd5fac662d6d7 = $(`<div id="html_e0e0c4ef827c0a4a144bd5fac662d6d7" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/residencial-casa-130-m-brisas-das-praias-aquiraz-ce-desocupado-imovel-banco-santander-1615126</div>`)[0];
+                popup_4eb12d2672c188afeb074f28ea58e313.setContent(html_e0e0c4ef827c0a4a144bd5fac662d6d7);
+            
+        
+
+        circle_marker_00f3a960259a16645fd2dde1f73fe4fe.bindPopup(popup_4eb12d2672c188afeb074f28ea58e313)
+        ;
+
+        
+    
+    
+            circle_marker_00f3a960259a16645fd2dde1f73fe4fe.bindTooltip(
+                `<div>
+                     Casa - R$ 188,100.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a5ec6ee540dcc29430f83a36d6c0c60f = L.circleMarker(
+                [-3.8219705, -38.4322468],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_4417806e0a1b8e76cd30f6b4db87387d);
+        
+    
+        var popup_95d1f11a0af27c82898a173925382337 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2b3adb0015c4fb98f537c4857684f60f = $(`<div id="html_2b3adb0015c4fb98f537c4857684f60f" style="width: 100.0%; height: 100.0%;">https://www.leilaoimovel.com.br/imovel/ce/aquiraz/terreno-terreno-em-aquiraz-ce-imovel-837793</div>`)[0];
+                popup_95d1f11a0af27c82898a173925382337.setContent(html_2b3adb0015c4fb98f537c4857684f60f);
+            
+        
+
+        circle_marker_a5ec6ee540dcc29430f83a36d6c0c60f.bindPopup(popup_95d1f11a0af27c82898a173925382337)
+        ;
+
+        
+    
+    
+            circle_marker_a5ec6ee540dcc29430f83a36d6c0c60f.bindTooltip(
+                `<div>
+                     Terreno - R$ 60,000.00
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

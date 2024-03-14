@@ -45,5 +45,6 @@ def plot_map(dataframe, name):
             folium.CircleMarker(location=coordinates, color=color, fill=True, radius=8, tooltip=(f'{dataframe.iloc[i, 0]} - R$ {dataframe.iloc[i, 1]:,.2f}'), popup=dataframe['Link'][i]).add_to(map)
         
         file.close()
-    
-    map.save(f'output//mapas//map_{name}.html')
+    save_path = r'output/mapas/map_'
+    save_path = save_path + name + '.html'
+    map.save(save_path)

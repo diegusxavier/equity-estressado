@@ -1,6 +1,7 @@
 from src.scraping.scraping_leilaoimovel import *
 from src.mapping import *
 import os
+import time
 
 def chose_extract_data():
     while True:
@@ -17,7 +18,10 @@ def chose_extract_data():
         driver = setup_webdriver()
         for cidade in cidades:
             website = 'https://www.leilaoimovel.com.br/leilao-de-imovel/' + cidade
+            start_time = time.time()
             create_n_save_df(website, driver)
+            end_time = time.time()
+            print(f'A extração dos dados demorou {(end_time-start_time)/60:2f} minutos.')
         
 
 def chose_plot_map():
@@ -35,7 +39,10 @@ def chose_plot_map():
     sheet_path = 'output\\planilhas\\' + sheets[input_command - 1] # plota uma unidade de mapa
     df = pd.read_excel(sheet_path)
     name = sheets[input_command - 1].split('_')[-1].split('.')[0]
+    start_time = time.time()
     plot_map(df, name)
+    end_time = time.time()
+    print(f'A extração dos dados demorou {(end_time-start_time)/60:2f} minutos.')
 
 def concat_df():
     sheets = os.listdir(r'output\planilhas')
