@@ -1,5 +1,7 @@
+from src.scraping.json_to_xlsx import *
 from src.scraping.scraping_leilaoimovel import *
 from src.mapping import *
+from src.scraping.scraping_olx import *
 import os
 import time
 
@@ -44,7 +46,7 @@ def chose_plot_map():
     end_time = time.time()
     print(f'A extração dos dados demorou {(end_time-start_time)/60:2f} minutos.')
 
-def concat_df():
+def chose_concat_df():
     sheets = os.listdir(r'output\planilhas')
     for i in range(len(sheets)): # imprime as planilhas disponíveis
         print(i+1, '-', sheets[i])
@@ -76,3 +78,19 @@ def concat_df():
         df.to_excel(f'output//planilhas//{new_sheet_name}.xlsx', index=False)
     else:
         print('----\nNão é possível concatenar apenas uma planilha')
+
+
+def chose_extract_olx():
+    while True:
+        print('----\nQual operação você deseja realizar?\n  1 - extrair dados da OLX\n  2 - Formatar json')
+        input_command = int(input('Escolha o número da operação desejada: '))
+        if input_command in list(range(1, 3)):
+            break
+        else:
+            print('----\nDIGITE UM NÚMERO VÁLIDO!')
+    if input_command == 1:
+        driver = setup_webdriver()
+        list_ads = []
+        get_page_json('https://www.olx.com.br/imoveis/venda/estado-ce/fortaleza-e-regiao', driver, list_ads)
+    elif input_command == 2:
+        json_to_xlsx(r'src\utils\raw_json_olx.json')

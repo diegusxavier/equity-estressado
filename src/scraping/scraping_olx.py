@@ -1,10 +1,8 @@
-import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.common.by import By
 import json
-import requests
-from bs4 import BeautifulSoup
+
 
 # setup webdriver
 def setup_webdriver():
@@ -37,11 +35,8 @@ def get_page_json(website, driver, list_ads):
     save_list(list_ads)
 
 def save_list(list):
-    with open("file.txt", 'w', encoding='utf-8') as f:
-        for item in list:
-            f.write(str(item) + '\n')
-
-
-driver = setup_webdriver()
-list_ads = []
-get_page_json('https://www.olx.com.br/imoveis/venda/estado-ce/fortaleza-e-regiao', driver, list_ads)
+    with open(r"src\utils\raw_json_olx.json", 'w', encoding='utf-8') as f:
+        f.write('[\n')
+        for i, item in enumerate(list):
+            f.write(str(item) + (',' if i < len(list) - 1 else str(item)) + '\n')
+        f.write(']\n')
