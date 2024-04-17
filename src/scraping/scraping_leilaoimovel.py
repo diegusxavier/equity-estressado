@@ -197,7 +197,7 @@ def page_exists(website):
     else: 
         return 1
 
-def create_n_save_df(website, driver):
+def create_n_save_df_leilaoimoveis(website, driver):
     if page_exists(website) == 1:
         df_columns = ['Tipo de Imóvel','Valor do Leilão', 'Área Total [m²]', 'Área Útil [m²]', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Valor à Vista', 'Desconto','Data de Início', 'Data de Encerramento', 'Data 1a Praça', 'Data 2a Praça', 'Tipo de Venda', 'Leiloeiro', 'Matrícula', 'Inscrição Imobiliária', 'Localização', 'Link']
         df = pd.DataFrame(columns=df_columns)

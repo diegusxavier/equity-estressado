@@ -21,7 +21,7 @@ def chose_extract_data():
         for cidade in cidades:
             website = 'https://www.leilaoimovel.com.br/leilao-de-imovel/' + cidade
             start_time = time.time()
-            create_n_save_df(website, driver)
+            create_n_save_df_leilaoimoveis(website, driver)
             end_time = time.time()
             print(f'A extração dos dados demorou {(end_time-start_time)/60:2f} minutos.')
         
@@ -82,15 +82,12 @@ def chose_concat_df():
 
 def chose_extract_olx():
     while True:
-        print('----\nQual operação você deseja realizar?\n  1 - extrair dados da OLX\n  2 - Formatar json')
+        print('----\nQual operação você deseja realizar?\n  1 - extrair dados da OLX')
         input_command = int(input('Escolha o número da operação desejada: '))
-        if input_command in list(range(1, 3)):
+        if input_command in list(range(1, 2)):
             break
         else:
             print('----\nDIGITE UM NÚMERO VÁLIDO!')
     if input_command == 1:
         driver = setup_webdriver()
-        list_ads = []
-        get_page_json('https://www.olx.com.br/imoveis/venda/estado-ce/fortaleza-e-regiao', driver, list_ads)
-    elif input_command == 2:
-        json_to_xlsx(r'src\utils\raw_json_olx.json')
+        create_n_save_df_olx('https://www.olx.com.br/imoveis/venda/estado-ce/fortaleza-e-regiao?q=eusébio', driver)
