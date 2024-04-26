@@ -82,12 +82,19 @@ def chose_concat_df():
 
 def chose_extract_olx():
     while True:
-        print('----\nQual operação você deseja realizar?\n  1 - extrair dados da OLX')
+        print('----\nQual operação você deseja realizar?\n  1 - extrair dados da OLX\n  2 - extrair nome dos anunciantes\n  3 - extrair dados da OLX e nome dos anunciantes (é mais recomendado fazer as outras duas operações separadas.)\n')
         input_command = int(input('Escolha o número da operação desejada: '))
-        if input_command in list(range(1, 2)):
+        if input_command in list(range(1, 4)):
             break
         else:
             print('----\nDIGITE UM NÚMERO VÁLIDO!')
     if input_command == 1:
         driver = setup_webdriver()
         create_n_save_df_olx('https://www.olx.com.br/imoveis/venda/estado-ce/fortaleza-e-regiao?q=eusébio', driver)
+    elif input_command == 2:
+        driver = setup_webdriver()
+        extract_seller_n_date(driver)
+    elif input_command == 3:
+        driver = setup_webdriver()
+        create_n_save_df_olx('https://www.olx.com.br/imoveis/venda/estado-ce/fortaleza-e-regiao?q=eusébio', driver, True)
+
