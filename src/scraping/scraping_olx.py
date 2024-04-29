@@ -102,7 +102,6 @@ def get_data(page_ad):
                 if dict['name'] == 're_complex_features':
                     re_complex_features = dict['value']
                     # print('Features do condomínio:', re_complex_features)
-        print('\n')
     
         return [None, date, title, real_estate_type, location, category, re_types,  size, price, rooms, bathrooms, garage_spaces, condominio, iptu, re_features, re_complex_features, url]
     
@@ -112,7 +111,7 @@ def take_inner_data(driver, website):
     return advertiser
 
 
-def create_n_save_df_olx(website, driver, complete=False):
+def create_n_save_df_olx(website, driver, file_name, complete=False):
     df_columns = ['Anunciante','Data do anúncio', 'Título', 'Tipo de Imóvel', 'Localização', 'Categoria', 'Tipo', 'Área Útil', 'Preço', 'Quartos', 'Banheiros', 'Vagas de Garagem', 'Valor Condomínio', 'Valor IPTU', 'Features do Imóvel', 'Features do Condomínio', 'URL']
     df = pd.DataFrame(columns=df_columns)
     
@@ -126,23 +125,23 @@ def create_n_save_df_olx(website, driver, complete=False):
             for page_ad in page_ads:
                 currently_row = get_data(page_ad)
                 df.loc[len(df)] = currently_row
-        df.to_excel(f'output//planilhas//scraping_olx.xlsx', index=False)
+        df.to_excel(f'output//planilhas//{file_name}.xlsx', index=False)
     df = df.dropna(how='all')
-    df.to_excel(f'output//planilhas//scraping_olx.xlsx', index=False)
+    df.to_excel(f'output//planilhas//{file_name}.xlsx', index=False)
     print('Primeira parte concluída')
     
-    if complete == True:
-        extract_seller_n_date(driver)
-        print('Segunda parte concluída')
+#     if complete == True:
+#         extract_seller_n_date(driver)
+#         print('Segunda parte concluída')
 
     
-def extract_seller_n_date(driver):
-    df = pd.read_excel('output//planilhas//scraping_olx.xlsx')
-    for i in range(df.shape[0]):
-        print(df['URL'][i])
-        advertiser = take_inner_data(driver, df['URL'][i])
-        df['Anunciante'][i] = advertiser
-        df.to_excel(f'output//planilhas//scraping_olx.xlsx', index=False)
+# def extract_seller_n_date(driver, file_name):
+#     df = pd.read_excel(f'output//planilhas//{file_name}.xlsx')
+#     for i in range(df.shape[0]):
+#         print(df['URL'][i])
+#         advertiser = take_inner_data(driver, df['URL'][i])
+#         df['Anunciante'][i] = advertiser
+#         df.to_excel(f'output//planilhas//{file_name}.xlsx', index=False)
 
 
 
