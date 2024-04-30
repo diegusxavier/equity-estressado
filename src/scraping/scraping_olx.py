@@ -19,7 +19,7 @@ def setup_webdriver():
 def page_exists(website, driver):
     driver.get(website)
     if 'Nenhum anúncio' in driver.find_element(By.XPATH, r'/html/body/div[1]/div[1]/main/div/div[2]/main/div[4]').text:
-        print('Page not found')
+        # print('Page not found')
         return False
     return True
         
@@ -31,9 +31,11 @@ def get_data(page_ad):
         title = None
         price = None
         location = None
+        neighbourhood = None
         url = None
         category = None
         real_estate_type = None
+        sale_rent = None
         size = None
         rooms = None
         bathrooms = None
@@ -102,8 +104,16 @@ def get_data(page_ad):
                 if dict['name'] == 're_complex_features':
                     re_complex_features = dict['value']
                     # print('Features do condomínio:', re_complex_features)
+        
+        if real_estate_type != None:
+            if ' - ' in real_estate_type:
+                sale_rent = real_estate_type.split(' - ')[0]
+        if ',' in location:
+            neighbourhood = location.split(', ')[1]
+            location = location.split(', ')[0]
+
     
-        return [None, date, title, real_estate_type, location, category, re_types,  size, price, rooms, bathrooms, garage_spaces, condominio, iptu, re_features, re_complex_features, url]
+        return [None, date, title, location, neighbourhood, sale_rent, category, re_types,  size, price, rooms, bathrooms, garage_spaces, condominio, iptu, re_features, re_complex_features, real_estate_type, url]
     
 def take_inner_data(driver, website):
     driver.get(website)
@@ -112,11 +122,15 @@ def take_inner_data(driver, website):
 
 
 def create_n_save_df_olx(website, driver, file_name, complete=False):
-    df_columns = ['Anunciante','Data do anúncio', 'Título', 'Tipo de Imóvel', 'Localização', 'Categoria', 'Tipo', 'Área Útil', 'Preço', 'Quartos', 'Banheiros', 'Vagas de Garagem', 'Valor Condomínio', 'Valor IPTU', 'Features do Imóvel', 'Features do Condomínio', 'URL']
+    df_columns = ['Anunciante','Data do anúncio', 'Título', 'Cidade', 'Bairro', 'Venda/Aluguel','Categoria', 'Tipo', 'Área Útil', 'Preço', 'Quartos', 'Banheiros', 'Vagas de Garagem', 'Valor Condomínio', 'Valor IPTU', 'Features do Imóvel', 'Features do Condomínio', 'Tipo de Imóvel', 'URL']
     df = pd.DataFrame(columns=df_columns)
     
     for i in range(1,101):
-        new_website = website + f'?o={i}'
+        if '?' in website:
+            extension_url = '&o='
+        else:
+            extension_url = '?o='
+        new_website = website + f'{extension_url}{i}'
         if page_exists(new_website, driver):
             element = driver.find_element(By.ID, '__NEXT_DATA__')
             json_text = driver.execute_script('return arguments[0].innerHTML;', element)
@@ -125,10 +139,12 @@ def create_n_save_df_olx(website, driver, file_name, complete=False):
             for page_ad in page_ads:
                 currently_row = get_data(page_ad)
                 df.loc[len(df)] = currently_row
+        else:
+            break
         df.to_excel(f'output//planilhas//{file_name}.xlsx', index=False)
     df = df.dropna(how='all')
     df.to_excel(f'output//planilhas//{file_name}.xlsx', index=False)
-    print('Primeira parte concluída')
+    # print('Primeira parte concluída')
     
 #     if complete == True:
 #         extract_seller_n_date(driver)
