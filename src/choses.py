@@ -82,7 +82,7 @@ def chose_concat_df():
 
 def chose_extract_olx():
     url = input('Cole aqui a URL da página da OLX que deseja extrair os dados: ')
-    file_name = input('Como você  deseja nomear a planilha? Digite o nome do arquivo sem a extensão: ')
+    file_name = input('\nComo você  deseja nomear a planilha? Digite o nome do arquivo sem a extensão: ')
     driver = setup_webdriver()
     create_n_save_df_olx(url, driver, file_name)
     # while True:
