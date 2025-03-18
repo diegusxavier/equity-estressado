@@ -1,4 +1,4 @@
-![Static Badge](https://img.shields.io/badge/Python-yellow?logo=python) ![Static Badge](https://img.shields.io/badge/web%20Scraping-green)  ![Static Badge](https://img.shields.io/badge/automation-red) ![Static Badge](https://img.shields.io/badge/Folium-brown
+![Static Badge](https://img.shields.io/badge/Python-yellow?logo=python) ![Static Badge](https://img.shields.io/badge/web%20Scraping-green)  ![Static Badge](https://img.shields.io/badge/automation-red) ![Static Badge](https://img.shields.io/badge/Folium-brown)
 
 
 
