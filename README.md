@@ -1,3 +1,8 @@
+![Static Badge](https://img.shields.io/badge/Python-yellow?logo=python) ![Static Badge](https://img.shields.io/badge/web%20Scraping-green)  ![Static Badge](https://img.shields.io/badge/automation-red)
+
+
+
+
 # Equity Estressado
 
 Projeto de automação do processo de extração de dados de sites (web scraping) de leilão de imóveis utilizando Python e a biblioteca Selenium. Os dados são salvos em planilhas em formato `.xlsx` e o mapeamento da região dos imóveis é salvo em formato `.html`.
