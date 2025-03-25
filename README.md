@@ -11,14 +11,15 @@ No presente momento, o programa é configurado apenas para realizar a extração
 
 ## Como utilizar
 
-1 - Baixe o navegador Firefox e salve-o na pasta padrão de instalação. O Chrome está com um problema de versão.
+1 - Baixe o navegador Firefox e salve-o na pasta padrão de instalação. O Chrome está com um problema de versão.  
     (Caso o Firefox esteja em outra localização, modifique a linha 11 de [scraping_leilaoimovel.py](./src/scraping/scraping_leilaoimovel.py) com o caminho desejado)
-2 - Execute o arquivo main.exe. Será aberto a janela preta do Terminal. Aguarde até aparecerem as opções de intruções.
-    (Caso o antivírus alerte, permita que o programa execute)
-3 - Leia as instruções que aparece na tela do Terminal e execute as operações desejadas.
-    (Você pode fechar o terminal para cancelar uma instrução dada errada e está em execução)
-4 - Você pode minimizar a janela do Firefox e do Terminal enquando roda algum processo
-5 - Verifique os arquivos gerados na pasta output e nas subpastas presentes.
+2 - Baixe o [Driver para o Firefox](https://github.com/mozilla/geckodriver/releases) ou o [Driver do Chrome](https://developer.chrome.com/docs/chromedriver/downloads?hl=pt-br) e mova o arquivo `.exe` para a pasta do navegator.  
+3 - Execute o arquivo main.exe. Será aberto a janela preta do Terminal. Aguarde até aparecerem as opções de intruções.
+    (Caso o antivírus alerte, permita que o programa execute).  
+4 - Leia as instruções que aparece na tela do Terminal e execute as operações desejadas.
+    (Você pode fechar o terminal para cancelar uma instrução dada errada e está em execução)  
+5 - Você pode minimizar a janela do Firefox e do Terminal enquando roda algum processo.  
+6 - Verifique os arquivos gerados na pasta output e nas subpastas presentes.  
 
 ### Extração dos dados
 - Dependendo da quantidade de dados, o processo pode ser demorado porque não está otimizado para ultilizar o multithreading [ideia de melhorias futuras].
