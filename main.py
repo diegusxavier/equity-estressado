@@ -7,7 +7,7 @@ def main():
 
     # inicia o prompt perguntando o que fazer
     while True:
-        print('----\nQual operação você deseja realizar?\n  1 - Extrair dados de um site\n  2 - Fazer mapeamento dos imóveis da região\n  3 - Concatenar planilhas\n  4 - Extrair dados da OLX\n')
+        print('----\nQual operação você deseja realizar?\n  1 - Extrair dados de um site\n  2 - Fazer mapeamento dos imóveis da região\n  3 - Concatenar planilhas\n')
         input_command = int(input('Escolha o número da operação desejada: '))
         if input_command in list(range(1, 5)):
             break

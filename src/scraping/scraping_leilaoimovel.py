@@ -78,14 +78,47 @@ def extract_data(link, driver):
     # MORE INFOS (corretly)
     more_infos = driver.find_element(By.CLASS_NAME, r'sobre-imovel')
     for div in more_infos.find_elements(By.TAG_NAME, 'div'):
-        if 'Data' in div.text and len(div.text.split()) < 15:
-            start_date = div.text.split()[-1]
-        if 'Leiloeiro' in div.text and len(div.text.split()) < 20:
-            auctioneer = div.text.split('(')[0].split(':')[1]
-        if 'Matrícula' in div.text and len(div.text.split()) < 20:
-            registration = div.text.split()[-1]
-        if 'Inscrição' in div.text and len(div.text.split()) < 20:
-            real_estate_registration = div.text.split()[-1]
+        if 'Data' in div.text and len(div.text.split()) < 15: # para nao pegar a lista gigante que tem essa string
+            if start_date == None:
+                start_date = div.text.split()[-1]
+                #print('DATA: ', start_date)
+        if 'Leiloeiro' in div.text and  div.text.split()[0] == 'Leiloeiro:':
+            if auctioneer == None:
+                auctioneer = div.text.split('(')[0].split(':')[1]
+                #print('LEILOEIRO: ', auctioneer)
+        if 'Matrícula' in div.text and len(div.text.split()) == 2 and div.text.split()[-1].isnumeric():
+            if registration == None:
+                registration = div.text.split()[-1]
+                #print('MATRICULA: ', registration)
+        if 'Inscrição' in div.text and len(div.text.split()) == 3 and div.text.split()[-1].isnumeric():
+            if real_estate_registration == None:
+                real_estate_registration = div.text.split()[-1]
+                #print('ISNCRICAO: ', real_estate_registration)
+        if 'Área Total' in div.text:
+            if total_area == None:
+                idx = div.text.split().index('Total:')
+                total_area = div.text.split()[idx+1]
+                #print('AREA TOTAL: ', total_area)
+        if 'Área Útil' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # para nao pegar a lista gigante que tem essa string
+            if util_area == None:
+                idx = div.text.split().index('Útil:')
+                util_area = div.text.split()[idx+1]
+                #print('AREA UTIL: ', util_area)
+        if 'Área Terreno' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # para nao pegar a lista gigante que tem essa string
+            if total_area == None:
+                idx = div.text.split().index('Terreno:')
+                total_area = div.text.split()[idx+1]
+                #print('AREA TERRENO: ', total_area)
+        if 'Quartos' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # para nao pegar a lista gigante que tem essa string
+            if bedrooms == None:
+                idx = div.text.split().index('Quartos:')
+                bedrooms = int(div.text.split()[idx+1])      
+                #print('QUARTOS: ', bedrooms)  
+        if 'Vagas' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # para nao pegar a lista gigante que tem essa string
+            if bedrooms == None:
+                idx = div.text.split().index('Vagas:')
+                car_vacancies = int(div.text.split()[idx+1])
+                #print('VAGAS: ', car_vacancies)
         if 'Tipo' in div.text and len(div.text.split()) < 20:
             type_of_sale = div.text.split('/')[-1]
             property_type = div.text.split('/')[0].split(':')[-1]
@@ -93,62 +126,51 @@ def extract_data(link, driver):
                 property_type = property_type[0:-1]
             if property_type[0] == ' ':
                 property_type = property_type[1:]
-    if 'Encerra' in driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div').text: # pode ter erro
-        end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[2]
-
-    # SPATIAL INFO (correctly)
-    spatial_info = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[1]/div/div[2]')
-    for element in spatial_info.find_elements(By.CLASS_NAME, 'detail'):
-        if element.find_element(By.CLASS_NAME, 'mb-1').text == 'Área Útil:':
-            util_area = element.find_element(By.CLASS_NAME, 'icon').find_element(By.TAG_NAME, 'span').text
-        elif element.find_element(By.CLASS_NAME, 'mb-1').text == 'Área Terreno:':
-            total_area = element.find_element(By.CLASS_NAME, 'icon').find_element(By.TAG_NAME, 'span').text
-        elif element.find_element(By.CLASS_NAME, 'mb-1').text == 'Quartos:':
-            bedrooms = int(element.find_element(By.CLASS_NAME, 'icon').find_element(By.TAG_NAME, 'span').text)
-        elif element.find_element(By.CLASS_NAME, 'mb-1').text == 'Vagas:':
-            car_vacancies = int(element.find_element(By.CLASS_NAME, 'icon').find_element(By.TAG_NAME, 'span').text)
     
+    # LINHA COM POSSÍVEL ERRO, TRECHO NÃO TÃO IMPORTANTE
+    # if 'Encerra' in driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div').text: # pode ter erro
+    #     end_date = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div/div[4]/p').text.split()[2]
+
 
     # OTHERS INFOS
-    price_infos = driver.find_element(By.XPATH, r'/html/body/div/main/div[9]/section[3]/div/div[2]/div[2]/div/div/div')
+    price_infos = driver.find_element(By.XPATH, r'/html/body/div[1]/main/div[9]/section[3]/div/div[2]/div[2]/div/div')  
     for div in price_infos.find_elements(By.TAG_NAME, 'div'):
-        # print(div.text.split(), '\n')
-        if '1°' in div.text:
-            if first_date == None:
-                first_div = list(div.text.split())
-                first_date = first_div[2]
-                first_price = first_div[6]
-                auction_price = first_price
-            
-        elif '2°' in div.text:
-            if second_date == None:
-                second_div = list(div.text.split())
-                second_date = second_div[2]
-                second_price = second_div[6]
-        elif 'avaliado' in div.text:
-            evaluation_price = div.text.split()[-1]
-        elif 'Imóvel' in div.text:
-            auction_price = div.text.split()[4]
-        elif 'Corretor' in div.text:
-            auctioneer = div.text.split(':')[1]
-            if 'CRECI' in div.text:
-                auctioneer = auctioneer.split('CRECI')[0]
-        elif 'vista' in div.text:
-            if first_price != None:
-                cash_price = (div.text.split()[4])
-            else:
-                cash_price = first_price
+        print(div.text.split())
 
+
+        # if '1°' in div.text:
+        #     if first_date == None:
+        #         first_div = list(div.text.split())
+        #         first_date = first_div[2]
+        #         first_price = first_div[6]
+        #         auction_price = first_price
+            
+        # elif '2°' in div.text:
+        #     if second_date == None:
+        #         second_div = list(div.text.split())
+        #         second_date = second_div[2]
+        #         second_price = second_div[6]
+        # elif 'avaliado' in div.text:
+        #     evaluation_price = div.text.split()[-1]
+        # elif 'Imóvel' in div.text:
+        #     auction_price = div.text.split()[4]
+        # elif 'Corretor' in div.text:
+        #     auctioneer = div.text.split(':')[1]
+        #     if 'CRECI' in div.text:
+        #         auctioneer = auctioneer.split('CRECI')[0]
+        # elif 'vista' in div.text:
+        #     if first_price != None:
+        #         cash_price = (div.text.split()[4])
+        #     else:
+        #         cash_price = first_price
                 
     if auction_price != None:
         if 'consultar' in auction_price:
             auction_price = None
         else:
             auction_price = float(auction_price.replace('.', '').replace(',', '.'))
-    if total_area != None:
-        total_area = float(total_area.replace('.', '').replace(',', '.').replace('m²', ''))
-    if util_area != None:
-        util_area = float(util_area.replace('.', '').replace(',', '.').replace('m²', ''))
+
+
     if first_price != None:
         first_price = float(first_price.replace('.', '').replace(',', '.'))
     if second_price != None:
