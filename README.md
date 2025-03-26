@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ```
 python main.py
 ```
-5 - Leia as instruções que aparece na tela do Terminal e execute as operações desejadas.
+5 - Leia as instruções que aparece na tela do Terminal e execute as operações desejadas. Para mais detalhes das instruções, leia continue lendo o README.md
     (Você pode fechar o terminal para cancelar uma instrução errada que está em execução)  
 6 - Você pode minimizar a janela do Firefox e do Terminal enquando roda algum processo.  
 7 - Verifique os arquivos gerados na pasta output e nas subpastas presentes.  
