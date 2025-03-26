@@ -14,22 +14,18 @@ No presente momento, o programa é configurado apenas para realizar a extração
 1 - Baixe o navegador Mozilla Firefox e salve-o na pasta padrão de instalação.  
     (Caso o Firefox esteja em outra localização, modifique a linha 12 de [scraping_leilaoimovel.py](./src/scraping/scraping_leilaoimovel.py) com o caminho desejado. Caso )
 2 - Baixe o [Driver para o Firefox](https://github.com/mozilla/geckodriver/releases) e mova o arquivo `.exe` para a pasta do navegador.  
-3 - Execute o arquivo `main.exe`. Será aberto a janela preta do Terminal. Aguarde até aparecerem as opções de intruções.
-    (Caso o antivírus alerte, permita que o programa execute).  
-4 - Leia as instruções que aparece na tela do Terminal e execute as operações desejadas.
-    (Você pode fechar o terminal para cancelar uma instrução dada errada e está em execução)  
-5 - Você pode minimizar a janela do Firefox e do Terminal enquando roda algum processo.  
-6 - Verifique os arquivos gerados na pasta output e nas subpastas presentes.  
-
-OBSERVAÇÃO: Caso prefira executar o programa pelo terminal, deve-se instalar as bibliotecas antes e, em seguida executar o arquivo `.py`:
-- Instalação das bibliotecas:
+3 - Instale as bibliotecas requeridas. No terminal, digite:
 ```
 pip install -r requirements.txt
 ```
-- Execução do programa:
+4 -Execute o programa. Abra o terminal na pasta raiz desse arquivo e digite:
 ```
 python main.py
 ```
+5 - Leia as instruções que aparece na tela do Terminal e execute as operações desejadas.
+    (Você pode fechar o terminal para cancelar uma instrução errada que está em execução)  
+6 - Você pode minimizar a janela do Firefox e do Terminal enquando roda algum processo.  
+7 - Verifique os arquivos gerados na pasta output e nas subpastas presentes.  
 
 
 ### Extração dos dados

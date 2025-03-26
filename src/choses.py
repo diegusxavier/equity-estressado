@@ -13,7 +13,7 @@ def chose_extract_data():
         else:
             print('----\nDIGITE UM NÚMERO VÁLIDO!')
     if input_command == 1:
-        print('----\nQual o município desejado? Escreva no formato do exemplo: Exemplo: fortaleza-ce OU juazeiro-do-norte-ce\n')
+        print('----\nQual o município desejado? Escreva no formato cidade-uf: Exemplo: fortaleza-ce  juazeiro-do-norte-ce\n')
         cidades = input('Nome do município: ')
         cidades = cidades.split()
         driver = setup_webdriver()
