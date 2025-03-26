@@ -1,27 +1,7 @@
 import googlemaps
 import folium
-import requests
 
-gmaps = googlemaps.Client(key='AIzaSyCzQIxBQDxD-9apyT4gdRzcKVCgsGi1cBM')
-
-# def get_coordinates(address):
-#     url = f"https://nominatim.openstreetmap.org/search"
-#     params = {
-#         "q": address,
-#         "format": "json",
-#         "limit": 1
-#     }
-    
-#     response = requests.get(url, params=params)
-    
-#     if response.status_code == 200 and response.json():
-#         data = response.json()[0]
-#         lat = float(data["lat"])
-#         lon = float(data["lon"])
-#         return lat, lon
-#     else:
-#         print(f"Endereço não encontrado: {address}")
-#         return None
+gmaps = googlemaps.Client(key='INSERT_KEY_HERE')
 
 
 def get_coordinates(addres):
