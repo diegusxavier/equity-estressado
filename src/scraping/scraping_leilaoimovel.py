@@ -4,6 +4,7 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.common.by import By
 import requests
 from bs4 import BeautifulSoup
+import sys
 
 # setup webdriver
 def setup_webdriver():
@@ -41,6 +42,8 @@ def get_all_ad_links(website, driver):
         get_page_links(links_list, driver)
     return links_list
 
+def has_a_number(s):  # avoid string values
+    return any(c.isdigit() for c in s)
 
 # web scraping algorithm for extract the important data of the link
 def extract_data(link, driver):
@@ -78,7 +81,7 @@ def extract_data(link, driver):
     # MORE INFOS (corretly)
     more_infos = driver.find_element(By.CLASS_NAME, r'sobre-imovel')
     for div in more_infos.find_elements(By.TAG_NAME, 'div'):
-        if 'Data' in div.text and len(div.text.split()) < 15: # para nao pegar a lista gigante que tem essa string
+        if 'Data' in div.text and len(div.text.split()) < 15: # to avoid getting the giant list that has this string
             if start_date == None:
                 start_date = div.text.split()[-1]
                 #print('DATA: ', start_date)
@@ -99,22 +102,22 @@ def extract_data(link, driver):
                 idx = div.text.split().index('Total:')
                 total_area = div.text.split()[idx+1]
                 #print('AREA TOTAL: ', total_area)
-        if 'Área Útil' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # para nao pegar a lista gigante que tem essa string
+        if 'Área Útil' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # to avoid getting the giant list that has this string
             if util_area == None:
                 idx = div.text.split().index('Útil:')
                 util_area = div.text.split()[idx+1]
                 #print('AREA UTIL: ', util_area)
-        if 'Área Terreno' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # para nao pegar a lista gigante que tem essa string
+        if 'Área Terreno' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # to avoid getting the giant list that has this string
             if total_area == None:
                 idx = div.text.split().index('Terreno:')
                 total_area = div.text.split()[idx+1]
                 #print('AREA TERRENO: ', total_area)
-        if 'Quartos' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # para nao pegar a lista gigante que tem essa string
+        if 'Quartos' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # to avoid getting the giant list that has this string
             if bedrooms == None:
                 idx = div.text.split().index('Quartos:')
                 bedrooms = int(div.text.split()[idx+1])      
                 #print('QUARTOS: ', bedrooms)  
-        if 'Vagas' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # para nao pegar a lista gigante que tem essa string
+        if 'Vagas' in div.text and len(div.text.split()) < 20 and 'm' in div.text: # to avoid getting the giant list that has this string
             if bedrooms == None:
                 idx = div.text.split().index('Vagas:')
                 car_vacancies = int(div.text.split()[idx+1])
@@ -134,9 +137,29 @@ def extract_data(link, driver):
 
     # OTHERS INFOS
     price_infos = driver.find_element(By.XPATH, r'/html/body/div[1]/main/div[9]/section[3]/div/div[2]/div[2]/div/div')  
-    for div in price_infos.find_elements(By.TAG_NAME, 'div'):
-        print(div.text.split())
-
+    price = price_infos.find_element(By.TAG_NAME, 'div')
+    if 'Valor do Imóvel' in price.text:
+        idx = price.text.split().index('Imóvel')
+        if has_a_number(price.text.split()[idx+2]):
+            auction_price = price.text.split()[idx+2]
+        # print('VALOR DO IMOVEL: ', auction_price)
+    if 'avaliado' in price.text:
+        idx = price.text.split().index('avaliado')
+        if has_a_number(price.text.split()[idx+2]):
+            evaluation_price = price.text.split()[idx+2]
+        # print('VALOR AVALIADO: ', evaluation_price)
+    if '1ª Praça' in price.text:
+        idx = price.text.split().index('1ª')
+        if has_a_number(price.text.split()[idx+6]):
+            first_price = price.text.split()[idx+6]
+        first_date = price.text.split()[idx+2]
+        # print('VALOR DE 1ª PRACA: ', first_date, first_price)
+    if '2ª Praça' in price.text:
+        idx = price.text.split().index('2ª')
+        if has_a_number(price.text.split()[idx+6]):
+            second_price = price.text.split()[idx+6]
+        second_date = price.text.split()[idx+2]
+        # print('VALOR DE 2ª PRACA: ', second_date, second_price)
 
         # if '1°' in div.text:
         #     if first_date == None:
@@ -163,13 +186,6 @@ def extract_data(link, driver):
         #         cash_price = (div.text.split()[4])
         #     else:
         #         cash_price = first_price
-                
-    if auction_price != None:
-        if 'consultar' in auction_price:
-            auction_price = None
-        else:
-            auction_price = float(auction_price.replace('.', '').replace(',', '.'))
-
 
     if first_price != None:
         first_price = float(first_price.replace('.', '').replace(',', '.'))
@@ -177,8 +193,8 @@ def extract_data(link, driver):
         second_price = float(second_price.replace('.', '').replace(',', '.'))
     if evaluation_price != None:
         evaluation_price = float(evaluation_price.replace('.', '').replace(',', '.'))
-    if cash_price != None:
-        cash_price = float(cash_price.replace('.', '').replace(',', '.'))
+    if auction_price != None:
+        auction_price = float(auction_price.replace('.', '').replace(',', '.'))
     if registration != None and registration.isnumeric():
         int(registration)
     if real_estate_registration != None and real_estate_registration.isnumeric():
@@ -190,14 +206,12 @@ def extract_data(link, driver):
     if first_price != None and second_price != None:
         if first_price > second_price:
             discount = (first_price - second_price)/first_price
-    elif evaluation_price != None and cash_price != None:
-        discount = (evaluation_price - cash_price)/evaluation_price
-    elif evaluation_price != None:
+    elif evaluation_price != None and auction_price != None:
         discount = (evaluation_price - auction_price)/evaluation_price
 
     discount = discount*100    
 
-    return [property_type, auction_price, total_area, util_area, bedrooms, car_vacancies, first_price, second_price, evaluation_price, cash_price, discount, start_date, end_date, first_date, second_date, type_of_sale, auctioneer, registration, real_estate_registration, localization, ad_link]
+    return [property_type, auction_price, total_area, util_area, bedrooms, car_vacancies, first_price, second_price, evaluation_price, discount, start_date, first_date, second_date, type_of_sale, auctioneer, registration, real_estate_registration, localization, ad_link]
 
 
 
@@ -221,7 +235,7 @@ def page_exists(website):
 
 def create_n_save_df_leilaoimoveis(website, driver):
     if page_exists(website) == 1:
-        df_columns = ['Tipo de Imóvel','Valor do Leilão', 'Área Total [m²]', 'Área Útil [m²]', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Valor à Vista', 'Desconto','Data de Início', 'Data de Encerramento', 'Data 1a Praça', 'Data 2a Praça', 'Tipo de Venda', 'Leiloeiro', 'Matrícula', 'Inscrição Imobiliária', 'Localização', 'Link']
+        df_columns = ['Tipo de Imóvel','Valor do Leilão', 'Área Total [m²]', 'Área Útil [m²]', 'Quartos', 'Vagas', 'R$ 1a Praça', 'R$ 2a Praça', 'Valor Avaliado', 'Desconto','Data de Início', 'Data 1a Praça', 'Data 2a Praça', 'Tipo de Venda', 'Leiloeiro', 'Matrícula', 'Inscrição Imobiliária', 'Localização', 'Link']
         df = pd.DataFrame(columns=df_columns)
 
         cidade = website.split('/')[-1]
@@ -229,7 +243,8 @@ def create_n_save_df_leilaoimoveis(website, driver):
         links_list = get_all_ad_links(website, driver)
         
         for i in range(len(links_list)):
-            print(f'{i} |', links_list[i], '\n')
+            sys.stdout.write(f"\rExtraindo do site {i+1}/{len(links_list)}...")
+            sys.stdout.flush()
             currently_row = extract_data(links_list[i], driver)
             df.loc[len(df)] = currently_row
             # df.to_excel(f'output//leilaoimoveis_{cidade}.xlsx', index=False)

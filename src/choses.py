@@ -14,7 +14,7 @@ def chose_extract_data():
         else:
             print('----\nDIGITE UM NÚMERO VÁLIDO!')
     if input_command == 1:
-        print('----\nQual o município desejado? Escreva no formato do exemplo: Exemplo: fortaleza-ce')
+        print('----\nQual o município desejado? Escreva no formato do exemplo: Exemplo: fortaleza-ce OU juazeiro-do-norte-ce\n')
         cidades = input('Nome do município: ')
         cidades = cidades.split()
         driver = setup_webdriver()
@@ -52,7 +52,7 @@ def chose_concat_df():
         print(i+1, '-', sheets[i])
     while True: # while para digitar o número correto
         invalid_index = 0 # para verificar se todos os dígitos são corretos
-        sheets_index = input('Digite os número da planilhas que deseja concatenar: ').split()
+        sheets_index = input('Digite os número da planilhas que deseja concatenar (separados por espaço): ').split()
         for i in range(len(sheets_index)): # transformar em inteiro
             sheets_index[i] = int(sheets_index[i])
         for index in sheets_index: # for para manter ou sair do laço que verifica se os índices escritos são corretos

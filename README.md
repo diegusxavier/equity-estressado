@@ -7,19 +7,30 @@
 
 Projeto de automação do processo de extração de dados de sites (web scraping) de leilão de imóveis utilizando Python e a biblioteca Selenium. Os dados são salvos em planilhas em formato `.xlsx` e o mapeamento da região dos imóveis é salvo em formato `.html`.
 
-No presente momento, o programa é configurado apenas para realizar a extração de apenas um site [serão adicionados mais sites em breve].
+No presente momento, o programa é configurado apenas para realizar a extração de apenas um site.
 
 ## Como utilizar
 
-1 - Baixe o navegador Firefox e salve-o na pasta padrão de instalação. O Chrome está com um problema de versão.  
-    (Caso o Firefox esteja em outra localização, modifique a linha 11 de [scraping_leilaoimovel.py](./src/scraping/scraping_leilaoimovel.py) com o caminho desejado)
-2 - Baixe o [Driver para o Firefox](https://github.com/mozilla/geckodriver/releases) ou o [Driver do Chrome](https://developer.chrome.com/docs/chromedriver/downloads?hl=pt-br) e mova o arquivo `.exe` para a pasta do navegator.  
-3 - Execute o arquivo main.exe. Será aberto a janela preta do Terminal. Aguarde até aparecerem as opções de intruções.
+1 - Baixe o navegador Mozilla Firefox e salve-o na pasta padrão de instalação.  
+    (Caso o Firefox esteja em outra localização, modifique a linha 12 de [scraping_leilaoimovel.py](./src/scraping/scraping_leilaoimovel.py) com o caminho desejado. Caso )
+2 - Baixe o [Driver para o Firefox](https://github.com/mozilla/geckodriver/releases) e mova o arquivo `.exe` para a pasta do navegador.  
+3 - Execute o arquivo `main.exe`. Será aberto a janela preta do Terminal. Aguarde até aparecerem as opções de intruções.
     (Caso o antivírus alerte, permita que o programa execute).  
 4 - Leia as instruções que aparece na tela do Terminal e execute as operações desejadas.
     (Você pode fechar o terminal para cancelar uma instrução dada errada e está em execução)  
 5 - Você pode minimizar a janela do Firefox e do Terminal enquando roda algum processo.  
 6 - Verifique os arquivos gerados na pasta output e nas subpastas presentes.  
+
+OBSERVAÇÃO: Caso prefira executar o programa pelo terminal, deve-se instalar as bibliotecas antes e, em seguida executar o arquivo `.py`:
+- Instalação das bibliotecas:
+```
+pip install -r requirements.txt
+```
+- Execução do programa:
+```
+python main.py
+```
+
 
 ### Extração dos dados
 - Dependendo da quantidade de dados, o processo pode ser demorado porque não está otimizado para ultilizar o multithreading [ideia de melhorias futuras].
@@ -32,7 +43,7 @@ Entretanto, pode minimizar as telas enquanto o programa roda em segundo plano.
 - Para extrair de múltiplas cidades, separe-as com espaços. Seja feito uma planilha para cada cidade.
         -> Exemplo 1: fortaleza-ce aquiraz-ce eusebio-ce maracanau-ce
 
-### Mapeamento
+### Mapeamento [Erro reportado]
 - O mapeamento é um processo rápido e vai gerar mapas em arquivos `.html`, que podem ser abertos em quaisquer navegador.
 - O mapeamento recebe uma planilha como parâmetro, ou seja, você só vai poder mapear as regiões em que houve extração de dados e a planilha está presente em sua respectiva pasta.
 - Basta apenas digitar o número referente a planilha para fazer o mapeamento.
