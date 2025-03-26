@@ -10,7 +10,7 @@ def main():
     while True:
         print('############################\nQual operação você deseja realizar?\n  1 - Extrair dados de um site\n  2 - Fazer mapeamento dos imóveis da região\n  3 - Concatenar planilhas\n')
         input_command = int(input('Escolha o número da operação desejada: '))
-        if input_command in list(range(1, 5)):
+        if input_command in list(range(1, 4)):
             break
         else:
             print('----\nDIGITE UM NÚMERO VÁLIDO!')
@@ -20,8 +20,7 @@ def main():
         chose_plot_map()
     elif input_command == 3:
         chose_concat_df()
-    elif input_command == 4:
-        chose_extract_olx()
+
 
 
 if __name__ == '__main__':
