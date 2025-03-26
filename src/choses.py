@@ -1,7 +1,6 @@
 from src.scraping.json_to_xlsx import *
 from src.scraping.scraping_leilaoimovel import *
 from src.mapping import *
-from src.scraping.scraping_olx import *
 import os
 import time
 
@@ -78,31 +77,4 @@ def chose_concat_df():
         df.to_excel(f'output//planilhas//{new_sheet_name}.xlsx', index=False)
     else:
         print('----\nNão é possível concatenar apenas uma planilha')
-
-
-def chose_extract_olx():
-    url = input('Cole aqui a URL da página da OLX que deseja extrair os dados: ')
-    file_name = input('\nComo você  deseja nomear a planilha? Digite o nome do arquivo sem a extensão: ')
-    driver = setup_webdriver()
-    create_n_save_df_olx(url, driver, file_name)
-    # while True:
-    #     print('----\nQual operação você deseja realizar?\n  1 - extrair dados da OLX\n  2 - extrair nome dos anunciantes\n  3 - extrair dados da OLX e nome dos anunciantes (é mais recomendado fazer as outras duas operações separadas.)\n')
-    #     input_command = int(input('Escolha o número da operação desejada: '))
-    #     if input_command in list(range(1, 4)):
-    #         break
-    #     else:
-    #         print('----\nDIGITE UM NÚMERO VÁLIDO!')
-    # if input_command == 1:
-    #     driver = setup_webdriver()
-    #     url = input('Cole aqui a URL da página da OLX que deseja extrair os dados: ')
-    #     file_name = input('Como você  deseja nomear a planilha? Digite o nome do arquivo sem a extensão: ')
-    #     create_n_save_df_olx(url, driver, file_name)
-    # elif input_command == 2:
-    #     driver = setup_webdriver()
-    #     extract_seller_n_date(driver)
-    # elif input_command == 3:
-    #     driver = setup_webdriver()
-    #     url = input('Cole aqui a URL da página da OLX que deseja extrair os dados: ')
-    #     file_name = input('Como você  deseja nomear a planilha? Digite o nome do arquivo sem a extensão: ')
-    #     create_n_save_df_olx(url, driver, file_name, True)
 
