@@ -1,7 +1,15 @@
 import googlemaps
 import folium
+import json
 
-gmaps = googlemaps.Client(key='INSERT_KEY_HERE')
+with open("config.json", "r") as file:
+    config = json.load(file)
+    API_KEY = config.get("api_key")
+
+if not API_KEY:
+    raise ValueError("Defina sua chave de API no arquivo config.json")
+
+gmaps = googlemaps.Client(key=API_KEY)
 
 
 def get_coordinates(addres):
