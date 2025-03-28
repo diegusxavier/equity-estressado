@@ -31,9 +31,13 @@ def chose_plot_map():
     for i in range(len(sheets)):
         print(i+1, '-', sheets[i])
     while True:
-        input_command = int(input('Digite o número da tabela que deseja mapear: '))
+        input_command = input('Digite o número da tabela que deseja mapear: ')
         print('\n')
-        if input_command in range(len(sheets) + 1):
+        if not input_command.isnumeric():
+            print('----\nDIGITE UM NÚMERO VÁLIDO!')
+            continue
+        elif int(input_command) in range(len(sheets) + 1):
+            input_command = int(input_command)
             break
         else:
             print('----\nDIGITE UM NÚMERO VÁLIDO!')
