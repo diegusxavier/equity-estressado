@@ -11,7 +11,7 @@ No presente momento, o programa é configurado apenas para realizar a extração
 
 ## Como utilizar
 
-1 - Baixe o navegador Mozilla Firefox e salve-o na pasta padrão de instalação.  
+1 - Baixe o navegador [Mozilla Firefox](https://www.mozilla.org/pt-BR/firefox/new/) e salve-o na pasta padrão de instalação.  
     (Caso o Firefox esteja em outra localização, modifique a linha 12 de [scraping_leilaoimovel.py](./src/scraping/scraping_leilaoimovel.py) com o caminho desejado. Caso )
 2 - Baixe o [Driver para o Firefox](https://github.com/mozilla/geckodriver/releases) e mova o arquivo `.exe` para a pasta do navegador.  
 3 - Instale as bibliotecas requeridas. No terminal, digite:
