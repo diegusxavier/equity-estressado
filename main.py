@@ -1,4 +1,4 @@
-print('Carregando...')
+print('\n###########################\nCarregando...')
 from src.choses import *
 import warnings
 

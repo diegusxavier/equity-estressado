@@ -10,16 +10,17 @@ def get_coordinates(address, city, state):
 
     complete_address = f"{address}, {city}, {state}"
     location = locator.geocode(complete_address)
+    # print(complete_address)
     if location:
         lat = location.latitude
         lon = location.longitude
         return lat, lon
     else:
-        # print('Não encontrado:', addres)
         return []
     
     
 def format_address(address):
+    formated_address = ''
     address = address.replace('.', '')
     if ',' in address:
         street = address.split(',')[0].strip()
@@ -28,12 +29,12 @@ def format_address(address):
         for element in not_street:
             if element.isnumeric():
                 number = element
+                formated_address = street + ' ' + number
                 break
     else:
         street = address.strip()
-        number = ''
-    format_address = street + ' ' + number
-    return format_address
+        formated_address = street
+    return formated_address
     
 
 def plot_map(dataframe, name):
@@ -44,13 +45,14 @@ def plot_map(dataframe, name):
     with open(r'output\outros\endereco_nao_encontrado.txt', 'w') as file:
 
         colors = ['red', 'blue', 'green', 'orange', 'yellow', 'purple', 'black', 'pink', 'white']
-        types = ['Casa', 'Terreno', 'Apartamento', 'Área Rural', 'Outros', 'Comercial', 'Galpão', 'Garagem']
+        types = ['Casa', 'Terreno', 'Apartamento', 'Área Rural', 'Outros', 'Comercial', 'Galpão', 'Garagem', ]
         i = 0
         while True:
             if i == dataframe.shape[0]:
                 print('Nenhum endereço encontrado.')
                 return '-1'
-            coordinates = get_coordinates(dataframe['Localização'][i])
+            formated_address = format_address(dataframe['Localização'][i])
+            coordinates = get_coordinates(formated_address, city, state)
             if len(coordinates) != 0:
                 map = folium.Map(location=coordinates, zoom_start=12)
                 break
@@ -59,13 +61,20 @@ def plot_map(dataframe, name):
         for i in range(dataframe.shape[0]):
             formated_address = format_address(dataframe['Localização'][i])
 
+            if dataframe['Tipo de Imóvel'].isna()[i] or dataframe['Tipo de Imóvel'][i] not in types:
+                dataframe['Tipo de Imóvel'][i] = 'Outros'
+
             color = colors[types.index(dataframe['Tipo de Imóvel'][i])]
 
             coordinates = get_coordinates(formated_address, city, state)
+
+
             if len(coordinates) == 0:
                 print('Endereço não encontrado:', dataframe['Link'][i])
                 file.write(dataframe['Link'][i] + "\n")
                 continue
+            else:
+                print(f'Endereço {i}/{dataframe.shape[0]} encontrado.')
             folium.CircleMarker(location=coordinates, color=color, fill=True, radius=8, tooltip=(f'{dataframe.iloc[i, 0]} - R$ {dataframe.iloc[i, 1]:,.2f}'), popup=dataframe['Link'][i]).add_to(map)
         
         file.close()

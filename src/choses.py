@@ -26,7 +26,7 @@ def chose_extract_data():
         
 
 def chose_plot_map():
-    print('----\nQual mapa você deseja plotar?')
+    print('----\nQual mapa você deseja plotar? (não escolha de planilhas concatenadas. )')
     sheets = os.listdir(r'output\planilhas')
     for i in range(len(sheets)):
         print(i+1, '-', sheets[i])
