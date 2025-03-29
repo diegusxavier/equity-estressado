@@ -47,6 +47,11 @@ Entretanto, pode minimizar as telas enquanto o programa roda em segundo plano.
 - Para o mapeamento de uma região que englobe mais de um município, deve-se fazer a concatenação/união das planilhas antes.
 - Caso o endereço não seja encontrado, será anotado um link no arquivo output\outros\endereco_nao_encontrado.txt. Esse arquivo é resetado a cada mapeamento.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e7643f40-89e7-4b3b-85b3-ce0821b5c00c" alt="Descrição da imagem" height="360" width="630">
+</p>
+
+
 ### Concatenação de planilhas
 - Basta digitar os números, separados por espaços, referentes as planilhas que você quer concatenar. A nova planilha unificada será nomeada com todas as cidades escolhidas.
 - Não digite números repetidos.
@@ -59,3 +64,4 @@ Entretanto, pode minimizar as telas enquanto o programa roda em segundo plano.
 - Caso queira o arquivo endereco_nao_encontrado.txt, copie e cole-o onde deseja. Não remova o arquivo da pasta.
 - Você pode adicionar novas planilhas à pasta output/planilhas, mas deve tomar a seguinte precaução:
     - As colunas devem ser idênticas e a formatação e a coluna 'Valor do Imóvel' deve corresponder a um tipo int ou float.
+
