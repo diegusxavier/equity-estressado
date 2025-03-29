@@ -39,7 +39,7 @@ Entretanto, pode minimizar as telas enquanto o programa roda em segundo plano.
 - Para extrair de múltiplas cidades, separe-as com espaços. Seja feito uma planilha para cada cidade.
         -> Exemplo 1: fortaleza-ce aquiraz-ce eusebio-ce maracanau-ce
 
-### Mapeamento [Erro reportado]
+### Mapeamento
 - O mapeamento é um processo rápido e vai gerar mapas em arquivos `.html`, que podem ser abertos em quaisquer navegador.
 - O mapeamento recebe uma planilha como parâmetro, ou seja, você só vai poder mapear as regiões em que houve extração de dados e a planilha está presente em sua respectiva pasta.
 - Basta apenas digitar o número referente a planilha para fazer o mapeamento.
