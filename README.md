@@ -11,7 +11,7 @@ No presente momento, o programa é configurado apenas para realizar a extração
 
 ## Como utilizar
 
-1 - Baixe o navegador Mozilla Firefox e salve-o na pasta padrão de instalação.  
+1 - Baixe o navegador [Mozilla Firefox](https://www.mozilla.org/pt-BR/firefox/new/) e salve-o na pasta padrão de instalação.  
     (Caso o Firefox esteja em outra localização, modifique a linha 12 de [scraping_leilaoimovel.py](./src/scraping/scraping_leilaoimovel.py) com o caminho desejado. Caso )
 2 - Baixe o [Driver para o Firefox](https://github.com/mozilla/geckodriver/releases) e mova o arquivo `.exe` para a pasta do navegador.  
 3 - Instale as bibliotecas requeridas. No terminal, digite:
@@ -39,13 +39,18 @@ Entretanto, pode minimizar as telas enquanto o programa roda em segundo plano.
 - Para extrair de múltiplas cidades, separe-as com espaços. Seja feito uma planilha para cada cidade.
         -> Exemplo 1: fortaleza-ce aquiraz-ce eusebio-ce maracanau-ce
 
-### Mapeamento [Erro reportado]
+### Mapeamento
 - O mapeamento é um processo rápido e vai gerar mapas em arquivos `.html`, que podem ser abertos em quaisquer navegador.
 - O mapeamento recebe uma planilha como parâmetro, ou seja, você só vai poder mapear as regiões em que houve extração de dados e a planilha está presente em sua respectiva pasta.
 - Basta apenas digitar o número referente a planilha para fazer o mapeamento.
     Diferentemente da extração de dados, nessa função você não pode tentar digitar mais de um número para o mapeamento [ideia de melhorias futuras].
 - Para o mapeamento de uma região que englobe mais de um município, deve-se fazer a concatenação/união das planilhas antes.
 - Caso o endereço não seja encontrado, será anotado um link no arquivo output\outros\endereco_nao_encontrado.txt. Esse arquivo é resetado a cada mapeamento.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e7643f40-89e7-4b3b-85b3-ce0821b5c00c" alt="Descrição da imagem" height="360" width="630">
+</p>
+
 
 ### Concatenação de planilhas
 - Basta digitar os números, separados por espaços, referentes as planilhas que você quer concatenar. A nova planilha unificada será nomeada com todas as cidades escolhidas.
@@ -59,3 +64,4 @@ Entretanto, pode minimizar as telas enquanto o programa roda em segundo plano.
 - Caso queira o arquivo endereco_nao_encontrado.txt, copie e cole-o onde deseja. Não remova o arquivo da pasta.
 - Você pode adicionar novas planilhas à pasta output/planilhas, mas deve tomar a seguinte precaução:
     - As colunas devem ser idênticas e a formatação e a coluna 'Valor do Imóvel' deve corresponder a um tipo int ou float.
+
